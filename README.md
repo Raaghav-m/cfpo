@@ -4,10 +4,10 @@
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Spaces-yellow)](https://huggingface.co/spaces)
 
 Welcome! This repository provides the implementation of:  
-**Beyond Prompt Content: Enhancing LLM Performance via Content-Format Integrated Prompt Optimization**  
+**Beyond Prompt Content: Enhancing LLM Performance via Content-Format Integrated Prompt Optimization**
 
 ![Pipeline of CFPO](README.assets/pipeline.png)  
-*CFPO iteratively optimizes prompt content and format through a two-stage process, combining case-diagnosis, Monte Carlo sampling, and dynamic format exploration.*  
+_CFPO iteratively optimizes prompt content and format through a two-stage process, combining case-diagnosis, Monte Carlo sampling, and dynamic format exploration._
 
 ---
 
@@ -63,31 +63,37 @@ chmod +x run.sh
 
 ---
 
-## Key Contributions  
-- **Integrated Optimization**: Jointly optimizes **prompt content** (via diagnosis and variations) and **format** (via UCT-based selection and LLM-guided generation).  
+## Key Contributions
+
+- **Integrated Optimization**: Jointly optimizes **prompt content** (via diagnosis and variations) and **format** (via UCT-based selection and LLM-guided generation).
 - **Format optimization strategy**: CFPO employs dynamic format optimization that generates new formats in an iterative manner and evaluates formats through a scoring system.
 - **Performance**: CFPO consistently improves LLM performance in a measurable and effective manner.
 
 ---
 
-## Methodology  
+## Methodology
 
-### Intro  
+### Intro
+
 ![Teaser figure](README.assets/teaser.png)  
-*Different models exhibit distinct format preferences and no single format consistently outperforms others across all contents.*  
+_Different models exhibit distinct format preferences and no single format consistently outperforms others across all contents._
 
-### Structured Prompt Template  
+### Structured Prompt Template
+
 ![Structured prompt example](README.assets/template.png)  
-In CFPO, prompts are decomposed into:  
-- **Content Components**: Task instructions, Task Detail, Output Format, Few-shot examples.  
-- **Format Components**: Prompt renderers (overall structure) and query formats.  
+In CFPO, prompts are decomposed into:
 
-### Format Optimization  
+- **Content Components**: Task instructions, Task Detail, Output Format, Few-shot examples.
+- **Format Components**: Prompt renderers (overall structure) and query formats.
+
+### Format Optimization
+
 ![Built-in format pool](README.assets/built-in_formats.png)  
-CFPO explores formats through:  
+CFPO explores formats through:
+
 1. **Initial Pool**: Predefined formats.
-2. **UCT Algorithm**: Balances exploration and exploitation.  
-3. **LLM-Guided Generation**: Expands the format pool using LLMs.  
+2. **UCT Algorithm**: Balances exploration and exploitation.
+3. **LLM-Guided Generation**: Expands the format pool using LLMs.
 
 ---
 
@@ -168,7 +174,7 @@ ROUND 1/3
 MUTATION PHASE:
    [MonteCarlo] Available keywords for mutation:
       ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
-   
+
    [MonteCarlo] Variation 1:
       - Keywords selected: ['OUTPUT_FORMAT', 'COT_HINTER']
       - Modifying OUTPUT_FORMAT...
@@ -187,12 +193,14 @@ ROUND 1 RESULTS:
 ## 🤖 Supported Models
 
 ### HuggingFace Inference Providers
+
 - `meta-llama/Llama-3.1-8B-Instruct` (default)
 - `Qwen/Qwen2.5-7B-Instruct`
 - `mistralai/Mistral-7B-Instruct-v0.3`
 - `deepseek-ai/DeepSeek-R1-Distill-Qwen-32B`
 
 ### Ollama (Local)
+
 - `phi` (small, fast)
 - `mistral` (balanced)
 - `llama2` (larger)
@@ -203,13 +211,13 @@ ROUND 1 RESULTS:
 
 ```bibtex
 @misc{liu2025cfpo,
-    title={Beyond Prompt Content: Enhancing LLM Performance via Content-Format Integrated Prompt Optimization}, 
+    title={Beyond Prompt Content: Enhancing LLM Performance via Content-Format Integrated Prompt Optimization},
     author={Yuanye Liu and Jiahang Xu and Li Lyna Zhang and Qi Chen and Xuan Feng and Yang Chen and Zhongxin Guo and Yuqing Yang and Cheng Peng},
     year={2025},
     eprint={2502.04295},
     archivePrefix={arXiv},
     primaryClass={cs.CL},
-    url={https://arxiv.org/abs/2502.04295}, 
+    url={https://arxiv.org/abs/2502.04295},
 }
 ```
 
