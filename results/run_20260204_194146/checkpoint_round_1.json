@@ -1,0 +1,134 @@
+{
+  "round": 1,
+  "beam": [
+    {
+      "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+      "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+      "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+      "COT_HINTER": "Let's solve this step by step:",
+      "round": 1,
+      "score": 1.0,
+      "action": "monte_carlo"
+    },
+    {
+      "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+      "TASK_DETAIL": "Carefully analyze the problem, highlighting the essential numbers and mathematical operations involved. Present a detailed, step-by-step solution.",
+      "OUTPUT_FORMAT": "Please respond with your solution, concluding with the numerical answer followed by 'The answer is: [NUMBER].",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+      "COT_HINTER": "Let's solve this step by step:",
+      "round": 1,
+      "score": 1.0,
+      "action": "monte_carlo"
+    }
+  ],
+  "best_score": 1.0,
+  "all_candidates": [
+    {
+      "rank": 1,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nPlease provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 2,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Carefully analyze the problem, highlighting the essential numbers and mathematical operations involved. Present a detailed, step-by-step solution.",
+        "OUTPUT_FORMAT": "Please respond with your solution, concluding with the numerical answer followed by 'The answer is: [NUMBER].",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nCarefully analyze the problem, highlighting the essential numbers and mathematical operations involved. Present a detailed, step-by-step solution.\n\n# Output Format\nPlease respond with your solution, concluding with the numerical answer followed by 'The answer is: [NUMBER].\n\nHere is an example:\nQ: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 3,
+      "score": 0.875,
+      "action": "case_diagnosis",
+      "prompt": {
+        "TASK_INSTRUCTION": "*   **Improved instruction**:\n\n    *   Identify the key components of the problem, such as numbers, operations, and variables.\n    *   Determine the type of problem, such as word problem, geometry, or algebra.\n    *   Show your work clearly and provide explanations for each step.\n\n    ```python\n<TASK_INSTRUCTION>\nSolve the math word problem step-by-step by identifying the key components, determining the problem type, and showing your work clearly. Include explanations for each step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "*   **Improved output format**:\n\n    *   End your response with 'The final answer is: \\[NUMBER\\]', where \\[NUMBER\\] is the final numerical answer.\n    *   For non-numerical answers, provide the solution in the required format.\n\n    ```python\n<OUTPUT_FORMAT>\nEnd your response with 'The final answer is: \\[NUMBER\\]' for numerical answers. For non-numerical answers, provide the solution in the required format.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "*   **Improved chain-of-thought hint**:\n\n    *   Break down the problem into smaller, manageable steps.\n    *   Use the key components identified in the problem to guide your calculations.\n    *   Check your work by plugging in your solution to ensure it satisfies the problem constraints.\n\n    ```python\n<COT_HINTER>\nTo solve this problem, break it down into smaller steps. Use the key components identified in the problem to guide your calculations. Check your work by plugging in your solution to ensure it satisfies the problem constraints.",
+        "round": 1,
+        "score": 0.875,
+        "action": "case_diagnosis"
+      },
+      "rendered_prompt": "# Task\n*   **Improved instruction**:\n\n    *   Identify the key components of the problem, such as numbers, operations, and variables.\n    *   Determine the type of problem, such as word problem, geometry, or algebra.\n    *   Show your work clearly and provide explanations for each step.\n\n    ```python\n<TASK_INSTRUCTION>\nSolve the math word problem step-by-step by identifying the key components, determining the problem type, and showing your work clearly. Include explanations for each step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\n*   **Improved output format**:\n\n    *   End your response with 'The final answer is: \\[NUMBER\\]', where \\[NUMBER\\] is the final numerical answer.\n    *   For non-numerical answers, provide the solution in the required format.\n\n    ```python\n<OUTPUT_FORMAT>\nEnd your response with 'The final answer is: \\[NUMBER\\]' for numerical answers. For non-numerical answers, provide the solution in the required format.\n\nHere is an example:\nQ: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\n\n*   **Improved chain-of-thought hint**:\n\n    *   Break down the problem into smaller, manageable steps.\n    *   Use the key components identified in the problem to guide your calculations.\n    *   Check your work by plugging in your solution to ensure it satisfies the problem constraints.\n\n    ```python\n<COT_HINTER>\nTo solve this problem, break it down into smaller steps. Use the key components identified in the problem to guide your calculations. Check your work by plugging in your solution to ensure it satisfies the problem constraints."
+    },
+    {
+      "rank": 4,
+      "score": 0.875,
+      "action": "format_xml",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 0.875,
+        "action": "format_xml"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    }
+  ],
+  "deleted_prompts": [
+    {
+      "reason": "duplicate",
+      "action": "format_plain",
+      "mutator": "FormatMutator",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 0.875,
+        "action": "format_plain"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "reason": "duplicate",
+      "action": "init",
+      "mutator": "beam_carry",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 0,
+        "score": 0.875,
+        "action": ""
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    }
+  ]
+}

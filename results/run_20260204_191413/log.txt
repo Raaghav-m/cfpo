@@ -1,0 +1,151 @@
+2026-02-04 19:14:13,475 | INFO | ============================================================
+2026-02-04 19:14:13,475 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-04 19:14:13,475 | INFO | ============================================================
+2026-02-04 19:14:13,475 | INFO | Model: huggingface (meta-llama/Llama-3.1-8B-Instruct)
+2026-02-04 19:14:13,475 | INFO | Rounds: 3, Beam size: 2
+2026-02-04 19:14:13,475 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-04 19:14:13,475 | INFO | Data: train=5, valid=5, test=5
+2026-02-04 19:14:13,475 | INFO | Output: ./results/run_20260204_191413
+2026-02-04 19:14:13,475 | INFO | ============================================================
+2026-02-04 19:14:13,475 | INFO | Using HuggingFace with model: meta-llama/Llama-3.1-8B-Instruct
+2026-02-04 19:14:13,475 | INFO | ✓ HuggingFace Providers: meta-llama/Llama-3.1-8B-Instruct (provider: auto)
+2026-02-04 19:14:13,475 | INFO | Task: GSM8KTask(train=5, valid=3, test=0)
+2026-02-04 19:14:13,475 | INFO | Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'FormatMutator']
+2026-02-04 19:14:13,476 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: John has 5 apples. He buys 3 more. How many does he have?
+A: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.
+The answer is: 8
+
+Let's solve this step by step:...
+
+2026-02-04 19:14:13,476 | INFO | ============================================================
+2026-02-04 19:14:13,476 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-04 19:14:13,476 | INFO | ============================================================
+2026-02-04 19:14:30,166 | INFO | Initial prompt score: 100.00%
+2026-02-04 19:14:30,166 | INFO | 
+============================================================
+2026-02-04 19:14:30,166 | INFO | ROUND 1/3
+2026-02-04 19:14:30,166 | INFO | ============================================================
+2026-02-04 19:14:30,167 | INFO | [CaseDiagnosis] Analyzing errors for round 1
+2026-02-04 19:14:50,611 | INFO | [CaseDiagnosis] Found 1 errors, 4 correct
+2026-02-04 19:15:05,018 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-04 19:15:14,256 | INFO | CaseDiagnosisMutator: generated 1 prompts
+2026-02-04 19:15:14,257 | INFO | [MonteCarlo] Generating 2 variations for round 1
+2026-02-04 19:15:14,257 | INFO | [MonteCarlo] Variation 1: modifying ['TASK_INSTRUCTION', 'EXAMPLES']
+2026-02-04 19:15:18,447 | INFO | [MonteCarlo] Created variation 1
+2026-02-04 19:15:18,447 | INFO | [MonteCarlo] Variation 2: modifying ['TASK_INSTRUCTION', 'OUTPUT_FORMAT']
+2026-02-04 19:15:21,233 | INFO | [MonteCarlo] Created variation 2
+2026-02-04 19:15:21,233 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-04 19:15:21,235 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-04 19:15:21,236 | INFO | [FormatMutator] Created xml format
+2026-02-04 19:15:21,236 | INFO | [FormatMutator] Created plain format
+2026-02-04 19:15:21,236 | INFO | FormatMutator: generated 2 prompts
+2026-02-04 19:15:21,238 | INFO | Total unique candidates: 4
+2026-02-04 19:15:33,910 | INFO |   Candidate 1: 100.00% (case_diagnosis)
+2026-02-04 19:15:46,920 | INFO |   Candidate 2: 100.00% (monte_carlo)
+2026-02-04 19:16:02,516 | INFO |   Candidate 3: 100.00% (monte_carlo)
+2026-02-04 19:16:17,913 | INFO |   Candidate 4: 100.00% (format_xml)
+2026-02-04 19:16:17,914 | INFO | 
+Best this round: 100.00%
+2026-02-04 19:16:17,914 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-04 19:16:17,918 | INFO | 
+============================================================
+2026-02-04 19:16:17,918 | INFO | ROUND 2/3
+2026-02-04 19:16:17,918 | INFO | ============================================================
+2026-02-04 19:16:17,918 | INFO | [CaseDiagnosis] Analyzing errors for round 2
+2026-02-04 19:17:24,588 | INFO | [CaseDiagnosis] Found 2 errors, 3 correct
+2026-02-04 19:17:48,468 | INFO | CaseDiagnosisMutator: generated 0 prompts
+2026-02-04 19:17:48,468 | INFO | [MonteCarlo] Generating 2 variations for round 2
+2026-02-04 19:17:48,468 | INFO | [MonteCarlo] Variation 1: modifying ['COT_HINTER']
+2026-02-04 19:17:51,136 | INFO | [MonteCarlo] Created variation 1
+2026-02-04 19:17:51,136 | INFO | [MonteCarlo] Variation 2: modifying ['EXAMPLES', 'TASK_DETAIL']
+2026-02-04 19:17:57,120 | INFO | [MonteCarlo] Created variation 2
+2026-02-04 19:17:57,120 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-04 19:17:57,122 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-04 19:17:57,122 | INFO | [FormatMutator] Created xml format
+2026-02-04 19:17:57,123 | INFO | [FormatMutator] Created plain format
+2026-02-04 19:17:57,123 | INFO | FormatMutator: generated 2 prompts
+2026-02-04 19:17:57,124 | INFO | [CaseDiagnosis] Analyzing errors for round 2
+2026-02-04 19:18:18,595 | INFO | [CaseDiagnosis] Found 1 errors, 4 correct
+2026-02-04 19:18:38,211 | INFO | CaseDiagnosisMutator: generated 0 prompts
+2026-02-04 19:18:38,211 | INFO | [MonteCarlo] Generating 2 variations for round 2
+2026-02-04 19:18:38,211 | INFO | [MonteCarlo] Variation 1: modifying ['OUTPUT_FORMAT', 'EXAMPLES']
+2026-02-04 19:18:44,641 | INFO | [MonteCarlo] Created variation 1
+2026-02-04 19:18:44,641 | INFO | [MonteCarlo] Variation 2: modifying ['OUTPUT_FORMAT', 'EXAMPLES']
+2026-02-04 19:18:50,363 | INFO | [MonteCarlo] Created variation 2
+2026-02-04 19:18:50,364 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-04 19:18:50,365 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-04 19:18:50,365 | INFO | [FormatMutator] Created xml format
+2026-02-04 19:18:50,366 | INFO | [FormatMutator] Created plain format
+2026-02-04 19:18:50,366 | INFO | FormatMutator: generated 2 prompts
+2026-02-04 19:18:50,367 | INFO | Total unique candidates: 6
+2026-02-04 19:19:03,952 | INFO |   Candidate 1: 100.00% (monte_carlo)
+2026-02-04 19:19:22,432 | INFO |   Candidate 2: 100.00% (monte_carlo)
+2026-02-04 19:19:36,935 | INFO |   Candidate 3: 100.00% (format_xml)
+2026-02-04 19:19:49,516 | INFO |   Candidate 4: 100.00% (monte_carlo)
+2026-02-04 19:21:04,450 | INFO |   Candidate 5: 100.00% (monte_carlo)
+2026-02-04 19:21:28,840 | ERROR | Error (attempt 1): HTTPSConnectionPool(host='router.huggingface.co', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by NewConnectionError("HTTPSConnection(host='router.huggingface.co', port=443): Failed to establish a new connection: [Errno 113] No route to host"))
+2026-02-04 19:21:38,842 | ERROR | Error (attempt 2): HTTPSConnectionPool(host='router.huggingface.co', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by NameResolutionError("HTTPSConnection(host='router.huggingface.co', port=443): Failed to resolve 'router.huggingface.co' ([Errno -3] Temporary failure in name resolution)"))
+2026-02-04 19:22:07,183 | INFO |   Candidate 6: 100.00% (format_xml)
+2026-02-04 19:22:07,183 | INFO | 
+Best this round: 100.00%
+2026-02-04 19:22:07,183 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-04 19:22:07,188 | INFO | 
+============================================================
+2026-02-04 19:22:07,188 | INFO | ROUND 3/3
+2026-02-04 19:22:07,188 | INFO | ============================================================
+2026-02-04 19:22:07,189 | INFO | [CaseDiagnosis] Analyzing errors for round 3
+2026-02-04 19:22:48,045 | INFO | [CaseDiagnosis] Found 2 errors, 3 correct
+2026-02-04 19:23:11,049 | INFO | CaseDiagnosisMutator: generated 0 prompts
+2026-02-04 19:23:11,050 | INFO | [MonteCarlo] Generating 2 variations for round 3
+2026-02-04 19:23:11,050 | INFO | [MonteCarlo] Variation 1: modifying ['OUTPUT_FORMAT']
+2026-02-04 19:23:12,892 | INFO | [MonteCarlo] Created variation 1
+2026-02-04 19:23:12,892 | INFO | [MonteCarlo] Variation 2: modifying ['OUTPUT_FORMAT', 'COT_HINTER']
+2026-02-04 19:23:16,210 | INFO | [MonteCarlo] Created variation 2
+2026-02-04 19:23:16,210 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-04 19:23:16,212 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-04 19:23:16,212 | INFO | [FormatMutator] Created xml format
+2026-02-04 19:23:16,213 | INFO | [FormatMutator] Created plain format
+2026-02-04 19:23:16,213 | INFO | FormatMutator: generated 2 prompts
+2026-02-04 19:23:16,214 | INFO | [CaseDiagnosis] Analyzing errors for round 3
+2026-02-04 19:24:05,997 | INFO | [CaseDiagnosis] Found 1 errors, 4 correct
+2026-02-04 19:24:18,239 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-04 19:24:27,328 | INFO | CaseDiagnosisMutator: generated 1 prompts
+2026-02-04 19:24:27,330 | INFO | [MonteCarlo] Generating 2 variations for round 3
+2026-02-04 19:24:27,330 | INFO | [MonteCarlo] Variation 1: modifying ['EXAMPLES']
+2026-02-04 19:24:33,226 | INFO | [MonteCarlo] Created variation 1
+2026-02-04 19:24:33,227 | INFO | [MonteCarlo] Variation 2: modifying ['COT_HINTER', 'TASK_INSTRUCTION']
+2026-02-04 19:24:36,533 | INFO | [MonteCarlo] Created variation 2
+2026-02-04 19:24:36,533 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-04 19:24:36,536 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-04 19:24:36,537 | INFO | [FormatMutator] Created xml format
+2026-02-04 19:24:36,537 | INFO | [FormatMutator] Created plain format
+2026-02-04 19:24:36,537 | INFO | FormatMutator: generated 2 prompts
+2026-02-04 19:24:36,541 | INFO | Total unique candidates: 7
+2026-02-04 19:24:50,083 | INFO |   Candidate 1: 100.00% (monte_carlo)
+2026-02-04 19:25:03,362 | INFO |   Candidate 2: 100.00% (monte_carlo)
+2026-02-04 19:25:16,792 | INFO |   Candidate 3: 100.00% (format_xml)
+2026-02-04 19:25:36,279 | INFO |   Candidate 4: 100.00% (case_diagnosis)
+2026-02-04 19:25:53,869 | INFO |   Candidate 5: 100.00% (monte_carlo)
+2026-02-04 19:26:10,809 | INFO |   Candidate 6: 100.00% (monte_carlo)
+2026-02-04 19:26:28,533 | INFO |   Candidate 7: 100.00% (format_xml)
+2026-02-04 19:26:28,534 | INFO | 
+Best this round: 100.00%
+2026-02-04 19:26:28,534 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-04 19:26:28,536 | INFO | 
+============================================================
+2026-02-04 19:26:28,536 | INFO | OPTIMIZATION COMPLETE
+2026-02-04 19:26:28,536 | INFO | Best score: 100.00%
+2026-02-04 19:26:28,537 | INFO | ============================================================
+2026-02-04 19:26:28,540 | INFO | Results saved to ./results/run_20260204_191413

@@ -1,0 +1,219 @@
+{
+  "round": 3,
+  "beam": [
+    {
+      "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+      "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+      "OUTPUT_FORMAT": "Provide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "To generate a variation of the EXAMPLES section, I will choose action 1: ADD one new example.\n\n Original Existing Examples:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\"\"\"\n\nNewly Added Example:\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8\n\nComplete New EXAMPLES section:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8",
+      "COT_HINTER": "Let's solve this step by step:",
+      "round": 3,
+      "score": 1.0,
+      "action": "monte_carlo"
+    },
+    {
+      "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+      "TASK_DETAIL": "Carefully analyze the math problem and extract the essential elements required to find a solution. Provide a step-by-step explanation of your thought process.",
+      "OUTPUT_FORMAT": "Provide your final numerical answer in the format \"The solution is [NUMBER].",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+      "COT_HINTER": "Let's solve this step by step:",
+      "round": 3,
+      "score": 1.0,
+      "action": "monte_carlo"
+    }
+  ],
+  "best_score": 1.0,
+  "all_candidates": [
+    {
+      "rank": 1,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Provide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "To generate a variation of the EXAMPLES section, I will choose action 1: ADD one new example.\n\n Original Existing Examples:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\"\"\"\n\nNewly Added Example:\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8\n\nComplete New EXAMPLES section:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.\n\nHere is an example:\nTo generate a variation of the EXAMPLES section, I will choose action 1: ADD one new example.\n\n Original Existing Examples:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\"\"\"\n\nNewly Added Example:\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8\n\nComplete New EXAMPLES section:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\nQ: A bakery has 15 boxes of cookies. They sell 7 boxes to a customer. How many boxes of cookies does the bakery have left?\nA: The bakery starts with 15 boxes of cookies. They sell 7 boxes. Total = 15 - 7 = 8 boxes.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 2,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+        "TASK_DETAIL": "Carefully analyze the math problem and extract the essential elements required to find a solution. Provide a step-by-step explanation of your thought process.",
+        "OUTPUT_FORMAT": "Provide your final numerical answer in the format \"The solution is [NUMBER].",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nBreak down the given math word problem into a series of logical steps, and then calculate the solution accordingly.\n\n# Details\nCarefully analyze the math problem and extract the essential elements required to find a solution. Provide a step-by-step explanation of your thought process.\n\n# Output Format\nProvide your final numerical answer in the format \"The solution is [NUMBER].\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 3,
+      "score": 1.0,
+      "action": "format_xml",
+      "prompt": {
+        "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 1.0,
+        "action": "format_xml"
+      },
+      "rendered_prompt": "# Task\nBreak down the given math word problem into a series of logical steps, and then calculate the solution accordingly.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nPlease provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 4,
+      "score": 0.875,
+      "action": "case_diagnosis",
+      "prompt": {
+        "TASK_INSTRUCTION": "**\n\n```markdown\n<TASK_INSTRUCTION>\nSolve the following math word problem step by step, considering multiple operations and complex calculations as needed. When faced with compound interest or other complex scenarios, be sure to:\n\n* Identify the initial principal amount, interest rate, and time period\n* Apply the compound interest formula or other relevant formulas as needed\n* Handle any withdrawals or reinvestments by updating the principal amount accordingly\n* Ensure accurate calculations and correct unit conversions (e.g., from percentages to decimal values)",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "**\n\n```markdown\n<OUTPUT_FORMAT>\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation, including any decimal values. For example:\n\nOriginal Example: A savings account earns 4% compound interest annually. If the initial deposit is $1,000 and the time period is 5 years, how much will the account balance be?\n\nSolution: The solution is 1149.78",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "**\n\n```markdown\n<COT_HINTER>\nBreak down complex calculations into manageable steps. When faced with multiple operations, consider the order of operations (PEMDAS) and handle each step separately. For instance:\n\n* Calculate the total interest earned after the initial 3-year period\n* Withdraw half the total amount and update the principal amount accordingly\n* Reinvest the remaining amount at 8% for 2 more years and calculate the final balance",
+        "round": 3,
+        "score": 0.875,
+        "action": "case_diagnosis"
+      },
+      "rendered_prompt": "# Task\n**\n\n```markdown\n<TASK_INSTRUCTION>\nSolve the following math word problem step by step, considering multiple operations and complex calculations as needed. When faced with compound interest or other complex scenarios, be sure to:\n\n* Identify the initial principal amount, interest rate, and time period\n* Apply the compound interest formula or other relevant formulas as needed\n* Handle any withdrawals or reinvestments by updating the principal amount accordingly\n* Ensure accurate calculations and correct unit conversions (e.g., from percentages to decimal values)\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\n**\n\n```markdown\n<OUTPUT_FORMAT>\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation, including any decimal values. For example:\n\nOriginal Example: A savings account earns 4% compound interest annually. If the initial deposit is $1,000 and the time period is 5 years, how much will the account balance be?\n\nSolution: The solution is 1149.78\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\n**\n\n```markdown\n<COT_HINTER>\nBreak down complex calculations into manageable steps. When faced with multiple operations, consider the order of operations (PEMDAS) and handle each step separately. For instance:\n\n* Calculate the total interest earned after the initial 3-year period\n* Withdraw half the total amount and update the principal amount accordingly\n* Reinvest the remaining amount at 8% for 2 more years and calculate the final balance"
+    },
+    {
+      "rank": 5,
+      "score": 0.875,
+      "action": "format_xml",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Provide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 0.875,
+        "action": "format_xml"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "rank": 6,
+      "score": 0.875,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Breaking it down step by step will make this problem much more manageable.",
+        "round": 3,
+        "score": 0.875,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nBreak down the given math word problem into a series of logical steps, and then calculate the solution accordingly.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nPlease provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nBreaking it down step by step will make this problem much more manageable."
+    },
+    {
+      "rank": 7,
+      "score": 0.75,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Output the final answer as a boxed numerical value, rounded to the nearest whole number if necessary, in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the exact numerical outcome of the mathematical operation.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Break down the problem into manageable steps.",
+        "round": 3,
+        "score": 0.75,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nOutput the final answer as a boxed numerical value, rounded to the nearest whole number if necessary, in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the exact numerical outcome of the mathematical operation.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nBreak down the problem into manageable steps."
+    }
+  ],
+  "deleted_prompts": [
+    {
+      "reason": "duplicate",
+      "action": "format_plain",
+      "mutator": "FormatMutator",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Provide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 1.0,
+        "action": "format_plain"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "reason": "duplicate",
+      "action": "format_plain",
+      "mutator": "FormatMutator",
+      "prompt": {
+        "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 3,
+        "score": 1.0,
+        "action": "format_plain"
+      },
+      "rendered_prompt": "# Task\nBreak down the given math word problem into a series of logical steps, and then calculate the solution accordingly.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nPlease provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "reason": "duplicate",
+      "action": "monte_carlo",
+      "mutator": "beam_carry",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Provide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 2,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nProvide the final numerical answer in the format: 'The solution is [NUMBER]'. Ensure that [NUMBER] is the precise numerical result of the math calculation.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    },
+    {
+      "reason": "duplicate",
+      "action": "monte_carlo",
+      "mutator": "beam_carry",
+      "prompt": {
+        "TASK_INSTRUCTION": "Break down the given math word problem into a series of logical steps, and then calculate the solution accordingly.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
+        "OUTPUT_FORMAT": "Please provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "I will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 2,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nBreak down the given math word problem into a series of logical steps, and then calculate the solution accordingly.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Show your work clearly.\n\n# Output Format\nPlease provide your final numerical solution as 'The answer is: [NUMBER]'. Ensure that [NUMBER] is the exact numerical value that solves the math problem.\n\nHere is an example:\nI will choose option 3: MODIFY an existing example to create a variation.\n\n Original Example: John has 5 apples. He buys 3 more. How many does he have?\n \n Modified Example: John has 12 apples. He gives 4 to his friend. How many does he have left?\n\n The modified example adds a different scenario where John is giving away apples instead of buying them, making it a more varied example for the GSM8K task.\n\n The complete new EXAMPLES section is:\n \"\"\"Q: John has 5 apples. He buys 3 more. How many does he have?\nA: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.\nThe answer is: 8\nQ: John has 12 apples. He gives 4 to his friend. How many does he have left?\nA: John starts with 12 apples. He gives 4 away. Total = 12 - 4 = 8 apples.\nThe answer is: 8\n\nLet's solve this step by step:"
+    }
+  ]
+}

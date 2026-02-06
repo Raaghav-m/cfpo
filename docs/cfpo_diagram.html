@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CFPO Process Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: white;
+      }
+      h1 {
+        color: #333;
+      }
+      .mermaid {
+        background-color: white;
+        padding: 20px;
+      }
+      .instructions {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CFPO Process Diagram</h1>
+
+    <div class="mermaid">
+      flowchart LR IP[Input Prompt] --> A A[Dataset & Task Preparation<br />•
+      Optimization Set<br />• Validation Set<br />• Initial Prompt] --> B
+      B[Structured Prompt<br />Decomposition<br />• Decompose Prompt<br />•
+      Content & Format Setup] --> C C[Content & Format<br />Optimization<br />•
+      Improve Instructions<br />• Refine Examples<br />• Test Prompt Formats<br />•
+      Select Best Layout] --> D D[LLM Evaluation<br />• Target LLM<br />•
+      Dataset Examples<br />• Output Comparison] D -->|Feedback & Results| B C
+      -->|Updated Prompt| A
+    </div>
+
+    <div class="instructions">
+      <h3>To Save as Image:</h3>
+      <ol>
+        <li>Right-click on the diagram above</li>
+        <li>Select "Save image as..." or "Copy image"</li>
+        <li>Or use browser's Print function (Ctrl+P) and save as PDF</li>
+      </ol>
+    </div>
+
+    <script>
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "default",
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+        },
+      });
+    </script>
+  </body>
+</html>

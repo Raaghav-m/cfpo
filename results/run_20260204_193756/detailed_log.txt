@@ -1,0 +1,42 @@
+
+============================================================
+CFPO OPTIMIZATION STARTED
+============================================================
+Configuration:
+   - Rounds: 3
+   - Beam Size: 2
+   - Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'FormatMutator']
+   - Validation Set: 3 examples
+============================================================
+
+============================================================
+INITIAL PROMPT
+============================================================
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+EXAMPLE_HINTER:
+   Here is an example:
+EXAMPLES:
+   Q: John has 5 apples. He buys 3 more. How many does he have?
+   A: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.
+   The answer is: 8
+COT_HINTER:
+   Let's solve this step by step:
+
+Evaluating initial prompt...
+Initial prompt score: 100.00%
+
+============================================================
+ROUND 1/3
+============================================================
+   Current beam size: 1 prompts
+   Best score so far: 100.00%
+
+MUTATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Mutating beam prompt 1/1:
