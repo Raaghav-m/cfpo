@@ -1,0 +1,31 @@
+2026-02-26 23:12:52,016 | INFO | ============================================================
+2026-02-26 23:12:52,016 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-26 23:12:52,016 | INFO | ============================================================
+2026-02-26 23:12:52,016 | INFO | Model: ollama (llama3)
+2026-02-26 23:12:52,016 | INFO | Rounds: 2, Beam size: 2
+2026-02-26 23:12:52,016 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-26 23:12:52,016 | INFO | Data: train=5, valid=5, test=5
+2026-02-26 23:12:52,016 | INFO | Output: ./results/run_20260226_231252
+2026-02-26 23:12:52,016 | INFO | ============================================================
+2026-02-26 23:12:52,016 | INFO | Using Ollama with model: llama3
+2026-02-26 23:12:52,025 | INFO | ✓ Connected to Ollama at http://localhost:11434
+2026-02-26 23:12:52,026 | INFO | Task: GSM8KTask(train=5, valid=5, test=5)
+2026-02-26 23:12:52,026 | INFO | Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'FormatMutator']
+2026-02-26 23:12:52,026 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how ma...
+
+2026-02-26 23:12:52,026 | INFO | ============================================================
+2026-02-26 23:12:52,026 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-26 23:12:52,026 | INFO | ============================================================
+2026-02-26 23:16:01,112 | INFO | Interrupted by user

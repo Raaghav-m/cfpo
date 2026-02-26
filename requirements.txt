@@ -13,6 +13,9 @@ transformers>=4.35.0
 # Web interface (for HuggingFace Spaces)
 gradio>=4.0.0
 
+# Plotting for benchmarks
+matplotlib>=3.7.0
+
 # Optional: For local model inference (uncomment if needed)
 # torch>=2.0.0
 # accelerate>=0.24.0

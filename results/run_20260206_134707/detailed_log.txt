@@ -1,0 +1,3212 @@
+
+============================================================
+CFPO OPTIMIZATION STARTED
+============================================================
+Configuration:
+   - Rounds: 3
+   - Beam Size: 2
+   - Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'UCTMutator']
+   - Validation Set: 5 examples
+============================================================
+
+============================================================
+INITIAL PROMPT
+============================================================
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+EXAMPLE_HINTER:
+   Here is an example:
+EXAMPLES:
+   Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   A: Let a = number of adult tickets and c = number of child tickets.
+   We have two equations:
+   1) a + c = 350 (total tickets)
+   2) 12a + 7c = 3400 (total revenue)
+   
+   From equation 1: c = 350 - a
+   Substitute into equation 2: 12a + 7(350 - a) = 3400
+   12a + 2450 - 7a = 3400
+   5a = 3400 - 2450
+   5a = 950
+   a = 190
+   
+   The answer is: 190
+COT_HINTER:
+   Let's solve this step by step:
+
+Evaluating initial prompt...
+Initial prompt score: 100.00%
+
+============================================================
+ROUND 1/3
+============================================================
+   Current beam size: 1 prompts
+   Best score so far: 100.00%
+
+MUTATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Mutating beam prompt 1/1:
+      - CaseDiagnosisMutator: generated 1 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+        |    
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+        |    
+        |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['OUTPUT_FORMAT', 'COT_HINTER']
+         - Number of keywords: 2/5
+         - Modifying OUTPUT_FORMAT:
+           Old: "End your response with 'The answer is: [NUMBER]' w..."
+           New: "Please provide the numerical solution to the probl..."
+         - Modifying COT_HINTER:
+           Old: "Let's solve this step by step:"
+           New: "Walk me through the solution to this problem."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['COT_HINTER']
+         - Number of keywords: 1/5
+         - Modifying COT_HINTER:
+           Old: "Let's solve this step by step:"
+           New: "Breaking it down step by step will help us find th..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Walk me through the solution to this problem.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Breaking it down step by step will help us find the solution.
+        +──────────────────────────────────────────────────────────+
+
+      [UCTMutator] Generating 2 format variations
+         Prompt Renderers: 11
+         Query Formats: 5
+         Task Type: qa
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - markdown: UCB1=inf (UNEXPLORED)
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: markdown (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - qa_plain: UCB1=inf (UNEXPLORED)
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: qa_plain (UCB1=inf)
+         [OK] Variant 1: renderer=markdown, query_fmt=qa_plain
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: xml (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: instruction_response (UCB1=inf)
+         [OK] Variant 2: renderer=xml, query_fmt=instruction_response
+      - UCTMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_markdown
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Let's solve this step by step:
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Let's solve this step by step:
+        +──────────────────────────────────────────────────────────+
+
+CANDIDATE SUMMARY:
+   ──────────────────────────────────────────────────
+   - Total generated: 6
+   - Duplicates removed: 2
+   - Unique candidates: 4
+
+ALL CANDIDATES FOR ROUND 1:
+   ──────────────────────────────────────────────────
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 1 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+   |    
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+   |    
+   |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 2 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Walk me through the solution to this problem.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 3 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Breaking it down step by step will help us find the solution.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 4 | Source: UCTMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Let's solve this step by step:
+   +────────────────────────────────────────────────────────+
+
+EVALUATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Evaluating candidate 1/4...
+   Candidate 1: Score 100.00% | Source: CaseDiagnosisMutator [BEST]
+
+   Evaluating candidate 2/4...
+   Candidate 2: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 3/4...
+   Candidate 3: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 4/4...
+   Candidate 4: Score 80.00% | Source: UCTMutator 
+
+ROUND 1 RESULTS:
+   ──────────────────────────────────────────────────
+   EVALUATION SCORES (sorted best to worst):
+   1. Score: 100.00% | Action: case_diagnosis -> SELECTED FOR BEAM
+   2. Score: 100.00% | Action: monte_carlo -> SELECTED FOR BEAM
+   3. Score: 100.00% | Action: monte_carlo 
+   4. Score: 80.00% | Action: format_markdown 
+
+   ROUND STATISTICS:
+   - Best this round:  100.00%
+   - Worst this round: 80.00%
+   - Score range:      80.00% -> 100.00%
+   - Global best:      100.00%
+
+   NEW BEAM (top 2 prompts for next round):
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 1/2 | Score: 100.00%
+   | Action: case_diagnosis
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+   |    
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+   |    
+   |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 2/2 | Score: 100.00%
+   | Action: monte_carlo
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Walk me through the solution to this problem.
+   +────────────────────────────────────────────────────────+
+
+   Checkpoint saved: checkpoint_round_1.json
+
+============================================================
+ROUND 2/3
+============================================================
+   Current beam size: 2 prompts
+   Best score so far: 100.00%
+
+MUTATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Mutating beam prompt 1/2:
+      - CaseDiagnosisMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+        |    
+        |    Example:
+        |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Improved chain-of-thought hint:
+        |    ```
+        |    <COT_HINTER>
+        |    To solve this problem, follow these steps:
+        |    
+        |    1. Read the problem carefully and identify the key numbers and operations needed.
+        |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+        |    3. Clearly describe each step, showing all calculations and intermediate results.
+        |    4. Use relevant mathematical concepts and formulas to solve the problem.
+        |    5. Verify the solution by checking for logical consistency and accuracy.
+        |    
+        |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+        |    
+        |    For problems involving compound interest, clearly state the principal amount, interest rate, time period, and any compounding frequency. Use the compound interest formula to calculate the future amount, considering any withdrawals or reinvestments.
+        |    
+        |    For problems involving similar triangles or ratios, identify the relevant variables and use proportions to find the unknown value.
+        |    
+        |    For problems requiring multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The answer is: [NUMBER] (rounded to two decimal places)' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Since the prompt already has a clear task instruction and output format, the <COT_HINTER> (Chain-of-Thought Hint) component does not need significant changes. However, we can add a hint to encourage the model to provide a clear and step-by-step solution:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    Provide a clear and step-by-step solution to the problem, including any formulas, equations, or calculations used. Avoid vague or ambiguous statements.
+        +──────────────────────────────────────────────────────────+
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['EXAMPLES', 'TASK_INSTRUCTION']
+         - Number of keywords: 2/5
+         - Modifying EXAMPLES:
+           Old: "Q: A movie theater sold 350 tickets for a show. Ad..."
+           New: "I will choose option 1: ADD one new example   Here..."
+         - Modifying TASK_INSTRUCTION:
+           Old: "The task instruction should be more specific and c..."
+           New: "Solve comprehensive math word problems by meticulo..."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['COT_HINTER']
+         - Number of keywords: 1/5
+         - Modifying COT_HINTER:
+           Old: "The chain-of-thought hint should be revised to pro..."
+           New: "To tackle intricate math problems, consider the fo..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [TASK_INSTRUCTION, EXAMPLES]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve comprehensive math word problems by meticulously following these guidelines: 
+        |    
+        |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+        |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+        |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I will choose option 1: ADD one new example
+        |    
+        |     Here's the new EXAMPLES section with an additional example:
+        |    
+        |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+        |    A: Let x = number of fiction books and y = number of non-fiction books.
+        |    We have two parts of information:
+        |    1) x + y = 480 (total books)
+        |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+        |    
+        |    From the ratio: 5x = 3y
+        |    y = (5/3)x
+        |    Substitute into equation 1: x + (5/3)x = 480
+        |    (8/3)x = 480
+        |    x = 180
+        |    y = (5/3)*180 = 300
+        |    
+        |    The answer is: 300
+        |    
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+        |    
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+        |    
+        |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    To tackle intricate math problems, consider the following steps:
+        |    
+        |    *   Identify the essential numerical information and relationships within the problem.
+        |    *   Determine the relevant mathematical principles or formulas that can be applied.
+        |    *   Simplify the problem or isolate crucial intermediate results.
+        |    *   Break down the problem into manageable steps and calculate intermediate values.
+        |    *   Verify the accuracy of your solution by checking your work.
+        |    
+        |    By systematically working through these steps, you'll be able to provide clear and precise solutions to complex math word problems.
+        +──────────────────────────────────────────────────────────+
+
+      [UCTMutator] Generating 2 format variations
+         Prompt Renderers: 11
+         Query Formats: 5
+         Task Type: qa
+
+      [LLM-Gen] Attempting to generate new format...
+      [LLM-Gen] Successfully generated: txt_template_0
+                Description: Plain text template with clear headers and sections
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - markdown: UCB1=inf (UNEXPLORED)
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: markdown (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - qa_plain: UCB1=inf (UNEXPLORED)
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: qa_plain (UCB1=inf)
+         [OK] Variant 1: renderer=markdown, query_fmt=qa_plain
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: xml (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: instruction_response (UCB1=inf)
+         [OK] Variant 2: renderer=xml, query_fmt=instruction_response
+      - UCTMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_markdown
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+        |    
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+        |    
+        |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+        |    
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+        |    
+        |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+   Mutating beam prompt 2/2:
+      - CaseDiagnosisMutator: generated 1 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    ```markdown
+        |    <TASK_INSTRUCTION>
+        |    Solve the following complex math word problem step by step, considering all relevant mathematical concepts and operations. Read the problem carefully, identify the key numbers and operations needed, and break down complex problems into smaller, manageable steps. Show all your calculations clearly and explicitly mention all assumptions made.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    ```markdown
+        |    <OUTPUT_FORMAT>
+        |    Please provide the detailed solution to the problem step by step, followed by 'The answer is: ' and the final result. Use clear and concise language and include all necessary calculations and intermediate results.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    ```markdown
+        |    <COT_HINTER>
+        |    If you are unsure about how to start solving the problem, break down the problem into smaller parts and identify the key numbers and operations needed. Consider all relevant mathematical concepts and operations that might be applicable to the problem. Think about what information is given and what is required to find the solution. Use clear and concise language to explain your thought process and all calculations made.
+        +──────────────────────────────────────────────────────────+
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['TASK_INSTRUCTION']
+         - Number of keywords: 1/5
+         - Modifying TASK_INSTRUCTION:
+           Old: "Solve the following math word problem step by step..."
+           New: "Break down and solve this math word problem by pro..."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['COT_HINTER', 'TASK_INSTRUCTION']
+         - Number of keywords: 2/5
+         - Modifying COT_HINTER:
+           Old: "Walk me through the solution to this problem."
+           New: "Guide me through the solution to this problem, ste..."
+         - Modifying TASK_INSTRUCTION:
+           Old: "Solve the following math word problem step by step..."
+           New: "Break down the given math word problem into a seri..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [TASK_INSTRUCTION]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Break down and solve this math word problem by providing a detailed, step-by-step solution.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Walk me through the solution to this problem.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [TASK_INSTRUCTION, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Break down the given math word problem into a series of logical steps and provide the solution.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Guide me through the solution to this problem, step by step.
+        +──────────────────────────────────────────────────────────+
+
+      [UCTMutator] Generating 2 format variations
+         Prompt Renderers: 12
+         Query Formats: 5
+         Task Type: qa
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - markdown: UCB1=inf (UNEXPLORED)
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: markdown (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - qa_plain: UCB1=inf (UNEXPLORED)
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: qa_plain (UCB1=inf)
+         [OK] Variant 1: renderer=markdown, query_fmt=qa_plain
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: xml (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: instruction_response (UCB1=inf)
+         [OK] Variant 2: renderer=xml, query_fmt=instruction_response
+      - UCTMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_markdown
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Walk me through the solution to this problem.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Walk me through the solution to this problem.
+        +──────────────────────────────────────────────────────────+
+
+CANDIDATE SUMMARY:
+   ──────────────────────────────────────────────────
+   - Total generated: 13
+   - Duplicates removed: 4
+   - Unique candidates: 9
+
+ALL CANDIDATES FOR ROUND 2:
+   ──────────────────────────────────────────────────
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 1 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+   |    
+   |    Example:
+   |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Improved chain-of-thought hint:
+   |    ```
+   |    <COT_HINTER>
+   |    To solve this problem, follow these steps:
+   |    
+   |    1. Read the problem carefully and identify the key numbers and operations needed.
+   |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+   |    3. Clearly describe each step, showing all calculations and intermediate results.
+   |    4. Use relevant mathematical concepts and formulas to solve the problem.
+   |    5. Verify the solution by checking for logical consistency and accuracy.
+   |    
+   |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 2 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+   |    
+   |    For problems involving compound interest, clearly state the principal amount, interest rate, time period, and any compounding frequency. Use the compound interest formula to calculate the future amount, considering any withdrawals or reinvestments.
+   |    
+   |    For problems involving similar triangles or ratios, identify the relevant variables and use proportions to find the unknown value.
+   |    
+   |    For problems requiring multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The answer is: [NUMBER] (rounded to two decimal places)' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Since the prompt already has a clear task instruction and output format, the <COT_HINTER> (Chain-of-Thought Hint) component does not need significant changes. However, we can add a hint to encourage the model to provide a clear and step-by-step solution:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    Provide a clear and step-by-step solution to the problem, including any formulas, equations, or calculations used. Avoid vague or ambiguous statements.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 3 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve comprehensive math word problems by meticulously following these guidelines: 
+   |    
+   |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+   |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+   |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I will choose option 1: ADD one new example
+   |    
+   |     Here's the new EXAMPLES section with an additional example:
+   |    
+   |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+   |    A: Let x = number of fiction books and y = number of non-fiction books.
+   |    We have two parts of information:
+   |    1) x + y = 480 (total books)
+   |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+   |    
+   |    From the ratio: 5x = 3y
+   |    y = (5/3)x
+   |    Substitute into equation 1: x + (5/3)x = 480
+   |    (8/3)x = 480
+   |    x = 180
+   |    y = (5/3)*180 = 300
+   |    
+   |    The answer is: 300
+   |    
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 4 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+   |    
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+   |    
+   |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    To tackle intricate math problems, consider the following steps:
+   |    
+   |    *   Identify the essential numerical information and relationships within the problem.
+   |    *   Determine the relevant mathematical principles or formulas that can be applied.
+   |    *   Simplify the problem or isolate crucial intermediate results.
+   |    *   Break down the problem into manageable steps and calculate intermediate values.
+   |    *   Verify the accuracy of your solution by checking your work.
+   |    
+   |    By systematically working through these steps, you'll be able to provide clear and precise solutions to complex math word problems.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 5 | Source: UCTMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:
+   |    
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.
+   |    
+   |    For problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 6 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    ```markdown
+   |    <TASK_INSTRUCTION>
+   |    Solve the following complex math word problem step by step, considering all relevant mathematical concepts and operations. Read the problem carefully, identify the key numbers and operations needed, and break down complex problems into smaller, manageable steps. Show all your calculations clearly and explicitly mention all assumptions made.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    ```markdown
+   |    <OUTPUT_FORMAT>
+   |    Please provide the detailed solution to the problem step by step, followed by 'The answer is: ' and the final result. Use clear and concise language and include all necessary calculations and intermediate results.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    ```markdown
+   |    <COT_HINTER>
+   |    If you are unsure about how to start solving the problem, break down the problem into smaller parts and identify the key numbers and operations needed. Consider all relevant mathematical concepts and operations that might be applicable to the problem. Think about what information is given and what is required to find the solution. Use clear and concise language to explain your thought process and all calculations made.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 7 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Break down and solve this math word problem by providing a detailed, step-by-step solution.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Walk me through the solution to this problem.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 8 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Break down the given math word problem into a series of logical steps and provide the solution.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Guide me through the solution to this problem, step by step.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 9 | Source: UCTMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Walk me through the solution to this problem.
+   +────────────────────────────────────────────────────────+
+
+EVALUATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Evaluating candidate 1/9...
+   Candidate 1: Score 100.00% | Source: CaseDiagnosisMutator [BEST]
+
+   Evaluating candidate 2/9...
+   Candidate 2: Score 20.00% | Source: CaseDiagnosisMutator 
+
+   Evaluating candidate 3/9...
+   Candidate 3: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 4/9...
+   Candidate 4: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 5/9...
+   Candidate 5: Score 100.00% | Source: UCTMutator [BEST]
+
+   Evaluating candidate 6/9...
+   Candidate 6: Score 100.00% | Source: CaseDiagnosisMutator [BEST]
+
+   Evaluating candidate 7/9...
+   Candidate 7: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 8/9...
+   Candidate 8: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 9/9...
+   Candidate 9: Score 100.00% | Source: UCTMutator [BEST]
+
+ROUND 2 RESULTS:
+   ──────────────────────────────────────────────────
+   EVALUATION SCORES (sorted best to worst):
+   1. Score: 100.00% | Action: case_diagnosis -> SELECTED FOR BEAM
+   2. Score: 100.00% | Action: monte_carlo -> SELECTED FOR BEAM
+   3. Score: 100.00% | Action: monte_carlo 
+   4. Score: 100.00% | Action: format_markdown 
+   5. Score: 100.00% | Action: case_diagnosis 
+   6. Score: 100.00% | Action: monte_carlo 
+   7. Score: 100.00% | Action: monte_carlo 
+   8. Score: 100.00% | Action: format_markdown 
+   9. Score: 20.00% | Action: case_diagnosis 
+
+   ROUND STATISTICS:
+   - Best this round:  100.00%
+   - Worst this round: 20.00%
+   - Score range:      20.00% -> 100.00%
+   - Global best:      100.00%
+
+   NEW BEAM (top 2 prompts for next round):
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 1/2 | Score: 100.00%
+   | Action: case_diagnosis
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+   |    
+   |    Example:
+   |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Improved chain-of-thought hint:
+   |    ```
+   |    <COT_HINTER>
+   |    To solve this problem, follow these steps:
+   |    
+   |    1. Read the problem carefully and identify the key numbers and operations needed.
+   |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+   |    3. Clearly describe each step, showing all calculations and intermediate results.
+   |    4. Use relevant mathematical concepts and formulas to solve the problem.
+   |    5. Verify the solution by checking for logical consistency and accuracy.
+   |    
+   |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 2/2 | Score: 100.00%
+   | Action: monte_carlo
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve comprehensive math word problems by meticulously following these guidelines: 
+   |    
+   |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+   |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+   |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I will choose option 1: ADD one new example
+   |    
+   |     Here's the new EXAMPLES section with an additional example:
+   |    
+   |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+   |    A: Let x = number of fiction books and y = number of non-fiction books.
+   |    We have two parts of information:
+   |    1) x + y = 480 (total books)
+   |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+   |    
+   |    From the ratio: 5x = 3y
+   |    y = (5/3)x
+   |    Substitute into equation 1: x + (5/3)x = 480
+   |    (8/3)x = 480
+   |    x = 180
+   |    y = (5/3)*180 = 300
+   |    
+   |    The answer is: 300
+   |    
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+   Checkpoint saved: checkpoint_round_2.json
+
+============================================================
+ROUND 3/3
+============================================================
+   Current beam size: 2 prompts
+   Best score so far: 100.00%
+
+MUTATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Mutating beam prompt 1/2:
+      - CaseDiagnosisMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    ```markdown
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    - Compound interest:
+        |        1.  Identify the principal amount, interest rate, time period, and frequency of compounding.
+        |        2.  Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |        3.  When compounding interest, consider the effect of periodic compounding and the impact of time on the growth of the investment.
+        |    - Multiple steps or sequences:
+        |        1.  Break down complex problems into smaller, manageable steps.
+        |        2.  Identify key numbers, operations, and relationships between variables.
+        |        3.  Describe each step clearly and provide intermediate results.
+        |    - Setting up equations or using formulas:
+        |        1.  Clearly state the equations or formulas and show your work in detail.
+        |        2.  When setting up equations, ensure that all variables are defined and that the equation accurately represents the problem.
+        |    - Multiple variables and relationships:
+        |        1.  Identify the key variables and their relationships in the problem.
+        |        2.  Use algebraic techniques, such as substitution and elimination, to solve the problem.
+        |        3.  When working with multiple variables, consider the impact of each variable on the solution.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    ```markdown
+        |    <OUTPUT_FORMAT>
+        |    Provide a step-by-step solution to the problem, including:
+        |    - A clear statement of the problem and any assumptions made.
+        |    - A list of key numbers, operations, and relationships between variables.
+        |    - A detailed description of each step, including any intermediate results.
+        |    - A clear statement of the final answer and any calculations used to arrive at that answer.
+        |    End your response with 'The final answer is: [NUMBER]'.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    ```markdown
+        |    <COT_HINTER>
+        |    To help you solve the problem, consider the following questions:
+        |    - What is the key information given in the problem?
+        |    - What are the key numbers, operations, and relationships between variables?
+        |    - How can you break down the problem into smaller, manageable steps?
+        |    - What algebraic techniques can you use to solve the problem?
+        |    - What are the key assumptions you need to make in order to solve the problem?
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: case_diagnosis
+        | Modified: [TASK_INSTRUCTION, OUTPUT_FORMAT, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    ```markdown
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years. When dealing with multiple interest rates or compounding periods, break down each step separately and calculate the total amount accordingly.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Algebraic manipulations: For algebraic problems, clearly state the equations or formulas and apply the necessary algebraic manipulations (e.g., simplification, substitution, or elimination) to solve for the unknown variable. Show your work in detail, including any intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    ```markdown
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' or 'The solution is: [FINAL_RESULT]'. Ensure that your intermediate steps are clearly labeled and explained in your response.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    ```markdown
+        |    <COT_HINTER>
+        |    To ensure accurate calculations and clear explanations, please provide a detailed step-by-step solution, including intermediate results. For each step, clearly explain the mathematical concept or formula applied and show your work in detail.
+        +──────────────────────────────────────────────────────────+
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['TASK_DETAIL']
+         - Number of keywords: 1/5
+         - Modifying TASK_DETAIL:
+           Old: "Read the problem carefully. Identify the key numbe..."
+           New: "Carefully examine the mathematical word problem, d..."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['TASK_DETAIL']
+         - Number of keywords: 1/5
+         - Modifying TASK_DETAIL:
+           Old: "Read the problem carefully. Identify the key numbe..."
+           New: "Carefully analyze the problem statement to extract..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [TASK_DETAIL]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Carefully examine the mathematical word problem, distinguishing between essential details and extraneous information.defgroup the problem into manageable components, and proceed with a step-by-step approach, incorporating precise calculations.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+        |    
+        |    Example:
+        |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Improved chain-of-thought hint:
+        |    ```
+        |    <COT_HINTER>
+        |    To solve this problem, follow these steps:
+        |    
+        |    1. Read the problem carefully and identify the key numbers and operations needed.
+        |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+        |    3. Clearly describe each step, showing all calculations and intermediate results.
+        |    4. Use relevant mathematical concepts and formulas to solve the problem.
+        |    5. Verify the solution by checking for logical consistency and accuracy.
+        |    
+        |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [TASK_DETAIL]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Carefully analyze the problem statement to extract relevant details.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+        |    
+        |    Example:
+        |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Improved chain-of-thought hint:
+        |    ```
+        |    <COT_HINTER>
+        |    To solve this problem, follow these steps:
+        |    
+        |    1. Read the problem carefully and identify the key numbers and operations needed.
+        |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+        |    3. Clearly describe each step, showing all calculations and intermediate results.
+        |    4. Use relevant mathematical concepts and formulas to solve the problem.
+        |    5. Verify the solution by checking for logical consistency and accuracy.
+        |    
+        |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+        +──────────────────────────────────────────────────────────+
+
+      [UCTMutator] Generating 2 format variations
+         Prompt Renderers: 12
+         Query Formats: 5
+         Task Type: qa
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - markdown: UCB1=inf (UNEXPLORED)
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: markdown (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - qa_plain: UCB1=inf (UNEXPLORED)
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: qa_plain (UCB1=inf)
+         [OK] Variant 1: renderer=markdown, query_fmt=qa_plain
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: xml (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: instruction_response (UCB1=inf)
+         [OK] Variant 2: renderer=xml, query_fmt=instruction_response
+      - UCTMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_markdown
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+        |    
+        |    Example:
+        |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Improved chain-of-thought hint:
+        |    ```
+        |    <COT_HINTER>
+        |    To solve this problem, follow these steps:
+        |    
+        |    1. Read the problem carefully and identify the key numbers and operations needed.
+        |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+        |    3. Clearly describe each step, showing all calculations and intermediate results.
+        |    4. Use relevant mathematical concepts and formulas to solve the problem.
+        |    5. Verify the solution by checking for logical consistency and accuracy.
+        |    
+        |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Improved instruction:
+        |    ```
+        |    <TASK_INSTRUCTION>
+        |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+        |    
+        |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+        |    
+        |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+        |    
+        |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    Improved output format:
+        |    ```
+        |    <OUTPUT_FORMAT>
+        |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+        |    
+        |    Example:
+        |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Improved chain-of-thought hint:
+        |    ```
+        |    <COT_HINTER>
+        |    To solve this problem, follow these steps:
+        |    
+        |    1. Read the problem carefully and identify the key numbers and operations needed.
+        |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+        |    3. Clearly describe each step, showing all calculations and intermediate results.
+        |    4. Use relevant mathematical concepts and formulas to solve the problem.
+        |    5. Verify the solution by checking for logical consistency and accuracy.
+        |    
+        |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+        +──────────────────────────────────────────────────────────+
+
+   Mutating beam prompt 2/2:
+      - CaseDiagnosisMutator: generated 0 variants
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['COT_HINTER']
+         - Number of keywords: 1/5
+         - Modifying COT_HINTER:
+           Old: "The chain-of-thought hint should be revised to pro..."
+           New: "When tackling intricate math word problems, consid..."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['COT_HINTER', 'TASK_INSTRUCTION']
+         - Number of keywords: 2/5
+         - Modifying COT_HINTER:
+           Old: "The chain-of-thought hint should be revised to pro..."
+           New: "To approach complex math word problems, consider t..."
+         - Modifying TASK_INSTRUCTION:
+           Old: "Solve comprehensive math word problems by meticulo..."
+           New: "Approach comprehensive math word problems with pre..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve comprehensive math word problems by meticulously following these guidelines: 
+        |    
+        |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+        |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+        |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I will choose option 1: ADD one new example
+        |    
+        |     Here's the new EXAMPLES section with an additional example:
+        |    
+        |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+        |    A: Let x = number of fiction books and y = number of non-fiction books.
+        |    We have two parts of information:
+        |    1) x + y = 480 (total books)
+        |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+        |    
+        |    From the ratio: 5x = 3y
+        |    y = (5/3)x
+        |    Substitute into equation 1: x + (5/3)x = 480
+        |    (8/3)x = 480
+        |    x = 180
+        |    y = (5/3)*180 = 300
+        |    
+        |    The answer is: 300
+        |    
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+        | COT_HINTER:
+        |    When tackling intricate math word problems, consider the following strategies:
+        |    
+        |    *   Identify and dissect the problem's core components, pinpointing crucial numbers, variables, and relationships.
+        |    *   Identify applicable mathematical principles, formulas, or methodologies that can be leveraged to find a solution.
+        |    *   Simplify the problem or isolate key intermediate results to facilitate a more manageable solution process.
+        |    *   Systematically outline the step-by-step solution approach, focusing on essential calculations and intermediate results.
+        |    *   Validate your solution by cross-checking calculations and verifying the accuracy of your response.
+        |    
+        |    Or:
+        |    
+        |    To effectively tackle complex math word problems, employ the following structured approach:
+        |    
+        |    1.  Carefully analyze the problem to distill the essential elements, including key numbers, variables, and relationships.
+        |    2.  Determine the relevant mathematical concepts or formulas that can be applied to solve the problem.
+        |    3.  Simplify the problem or isolate critical intermediate results to facilitate a more streamlined solution process.
+        |    4.  Develop a clear, step-by-step solution strategy, highlighting crucial calculations and intermediate results.
+        |    5.  Verify the accuracy of your solution by thoroughly checking your work and calculations.
+        |    
+        |    Or:
+        |    
+        |    For complex math word problems, consider the following step-by-step framework:
+        |    
+        |    *   **Problem Analysis**: Identify key numbers, variables, and relationships in the problem.
+        |    *   **Concept Application**: Determine the relevant mathematical concepts or formulas to apply.
+        |    *   **Simplification**: Simplify the problem or isolate critical intermediate results.
+        |    *   **Solution Strategy**: Develop a clear, step-by-step solution approach, emphasizing crucial calculations and intermediate results.
+        |    *   **Verification**: Thoroughly check your work and calculations to ensure accuracy.
+        |    
+        |    Or:
+        |    
+        |    When approaching complex math word problems, apply the following problem-solving framework:
+        |    
+        |    1.  **Contextualize**: Understand the problem's context and identify key elements, such as numbers, variables, and relationships.
+        |    2.  **Conceptualize**: Determine the relevant mathematical concepts or formulas that can be applied to solve the problem.
+        |    3.  **Simplify**: Simplify the problem or isolate critical intermediate results to facilitate a more efficient solution process.
+        |    4.  **Methodize**: Develop a clear, step-by-step solution strategy, highlighting crucial calculations and intermediate results.
+        |    5.  **Validate**: Verify the accuracy of your solution by thoroughly checking your work and calculations.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [TASK_INSTRUCTION, COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Approach comprehensive math word problems with precision and thoroughness by adhering to the following guidelines:
+        |    
+        |    - Decompose intricate problems into manageable components, carefully isolating essential numbers, operations, and interdependencies.
+        |    - Provide a step-by-step justification of your solution, including significant intermediate findings, for problems involving multi-step resolutions or sequential calculations.
+        |    - For word problems that necessitate mathematical expressions or formulas, explicitly derive and apply the relevant equations or formulas, presenting detailed calculations and intermediate results for clarity."""
+        |    
+        |    Let me know if you would like me to make any changes.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I will choose option 1: ADD one new example
+        |    
+        |     Here's the new EXAMPLES section with an additional example:
+        |    
+        |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+        |    A: Let x = number of fiction books and y = number of non-fiction books.
+        |    We have two parts of information:
+        |    1) x + y = 480 (total books)
+        |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+        |    
+        |    From the ratio: 5x = 3y
+        |    y = (5/3)x
+        |    Substitute into equation 1: x + (5/3)x = 480
+        |    (8/3)x = 480
+        |    x = 180
+        |    y = (5/3)*180 = 300
+        |    
+        |    The answer is: 300
+        |    
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+        | COT_HINTER:
+        |    To approach complex math word problems, consider the following step-by-step process:
+        |    
+        |    * Identify the key elements: What numbers, variables, and relationships are mentioned in the problem?
+        |    * Determine the mathematical foundation: What mathematical concepts, formulas, or principles apply to the problem?
+        |    * Simplify and break down the problem: Can you isolate specific components or simplify the problem to make it more manageable?
+        |    * Develop a solution strategy: Outline the necessary steps to solve the problem, including any intermediate calculations or checks required.
+        |    * Verify your solution: Take the time to review and validate your work to ensure accuracy and confidence in your answer.
+        |    
+        |    The answer is: [NUMBER]
+        +──────────────────────────────────────────────────────────+
+
+      [UCTMutator] Generating 2 format variations
+         Prompt Renderers: 12
+         Query Formats: 5
+         Task Type: qa
+
+      [LLM-Gen] Attempting to generate new format...
+      [LLM-Gen] Successfully generated: yaml_format_1
+                Description: YAML formatted prompt for a reasoning task
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - markdown: UCB1=inf (UNEXPLORED)
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         - yaml_format_1: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: markdown (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - qa_plain: UCB1=inf (UNEXPLORED)
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: qa_plain (UCB1=inf)
+         [OK] Variant 1: renderer=markdown, query_fmt=qa_plain
+
+      [UCT] Prompt Renderer Selection (exploration_c=1.414):
+         - xml: UCB1=inf (UNEXPLORED)
+         - plain: UCB1=inf (UNEXPLORED)
+         - structured: UCB1=inf (UNEXPLORED)
+         - json: UCB1=inf (UNEXPLORED)
+         - html: UCB1=inf (UNEXPLORED)
+         - latex: UCB1=inf (UNEXPLORED)
+         - conversational: UCB1=inf (UNEXPLORED)
+         - numbered: UCB1=inf (UNEXPLORED)
+         - academic: UCB1=inf (UNEXPLORED)
+         - chain_of_thought: UCB1=inf (UNEXPLORED)
+         - txt_template_0: UCB1=inf (UNEXPLORED)
+         - yaml_format_1: UCB1=inf (UNEXPLORED)
+         -> Selected renderer: xml (UCB1=inf)
+
+      [UCT] Query Format Selection (exploration_c=1.414):
+         - instruction_response: UCB1=inf (UNEXPLORED)
+         - problem_solution: UCB1=inf (UNEXPLORED)
+         - input_output: UCB1=inf (UNEXPLORED)
+         - step_by_step: UCB1=inf (UNEXPLORED)
+         -> Selected query format: instruction_response (UCB1=inf)
+         [OK] Variant 2: renderer=xml, query_fmt=instruction_response
+      - UCTMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_markdown
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve comprehensive math word problems by meticulously following these guidelines: 
+        |    
+        |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+        |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+        |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I will choose option 1: ADD one new example
+        |    
+        |     Here's the new EXAMPLES section with an additional example:
+        |    
+        |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+        |    A: Let x = number of fiction books and y = number of non-fiction books.
+        |    We have two parts of information:
+        |    1) x + y = 480 (total books)
+        |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+        |    
+        |    From the ratio: 5x = 3y
+        |    y = (5/3)x
+        |    Substitute into equation 1: x + (5/3)x = 480
+        |    (8/3)x = 480
+        |    x = 180
+        |    y = (5/3)*180 = 300
+        |    
+        |    The answer is: 300
+        |    
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve comprehensive math word problems by meticulously following these guidelines: 
+        |    
+        |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+        |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+        |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I will choose option 1: ADD one new example
+        |    
+        |     Here's the new EXAMPLES section with an additional example:
+        |    
+        |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+        |    A: Let x = number of fiction books and y = number of non-fiction books.
+        |    We have two parts of information:
+        |    1) x + y = 480 (total books)
+        |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+        |    
+        |    From the ratio: 5x = 3y
+        |    y = (5/3)x
+        |    Substitute into equation 1: x + (5/3)x = 480
+        |    (8/3)x = 480
+        |    x = 180
+        |    y = (5/3)*180 = 300
+        |    
+        |    The answer is: 300
+        |    
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+        | COT_HINTER:
+        |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+        |    
+        |    ```
+        |    <COT_HINTER>
+        |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+        |    
+        |    *   What are the key numbers and relationships in the problem?
+        |    *   What mathematical concepts or formulas can I apply to solve the problem?
+        |    *   How can I simplify the problem or identify intermediate results?
+        |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+        |    *   How can I check my work or verify the accuracy of my solution?
+        |    
+        |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+        +──────────────────────────────────────────────────────────+
+
+CANDIDATE SUMMARY:
+   ──────────────────────────────────────────────────
+   - Total generated: 12
+   - Duplicates removed: 4
+   - Unique candidates: 8
+
+ALL CANDIDATES FOR ROUND 3:
+   ──────────────────────────────────────────────────
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 1 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    ```markdown
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    - Compound interest:
+   |        1.  Identify the principal amount, interest rate, time period, and frequency of compounding.
+   |        2.  Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |        3.  When compounding interest, consider the effect of periodic compounding and the impact of time on the growth of the investment.
+   |    - Multiple steps or sequences:
+   |        1.  Break down complex problems into smaller, manageable steps.
+   |        2.  Identify key numbers, operations, and relationships between variables.
+   |        3.  Describe each step clearly and provide intermediate results.
+   |    - Setting up equations or using formulas:
+   |        1.  Clearly state the equations or formulas and show your work in detail.
+   |        2.  When setting up equations, ensure that all variables are defined and that the equation accurately represents the problem.
+   |    - Multiple variables and relationships:
+   |        1.  Identify the key variables and their relationships in the problem.
+   |        2.  Use algebraic techniques, such as substitution and elimination, to solve the problem.
+   |        3.  When working with multiple variables, consider the impact of each variable on the solution.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    ```markdown
+   |    <OUTPUT_FORMAT>
+   |    Provide a step-by-step solution to the problem, including:
+   |    - A clear statement of the problem and any assumptions made.
+   |    - A list of key numbers, operations, and relationships between variables.
+   |    - A detailed description of each step, including any intermediate results.
+   |    - A clear statement of the final answer and any calculations used to arrive at that answer.
+   |    End your response with 'The final answer is: [NUMBER]'.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    ```markdown
+   |    <COT_HINTER>
+   |    To help you solve the problem, consider the following questions:
+   |    - What is the key information given in the problem?
+   |    - What are the key numbers, operations, and relationships between variables?
+   |    - How can you break down the problem into smaller, manageable steps?
+   |    - What algebraic techniques can you use to solve the problem?
+   |    - What are the key assumptions you need to make in order to solve the problem?
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 2 | Source: CaseDiagnosisMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    ```markdown
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years. When dealing with multiple interest rates or compounding periods, break down each step separately and calculate the total amount accordingly.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Algebraic manipulations: For algebraic problems, clearly state the equations or formulas and apply the necessary algebraic manipulations (e.g., simplification, substitution, or elimination) to solve for the unknown variable. Show your work in detail, including any intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    ```markdown
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' or 'The solution is: [FINAL_RESULT]'. Ensure that your intermediate steps are clearly labeled and explained in your response.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    ```markdown
+   |    <COT_HINTER>
+   |    To ensure accurate calculations and clear explanations, please provide a detailed step-by-step solution, including intermediate results. For each step, clearly explain the mathematical concept or formula applied and show your work in detail.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 3 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Carefully examine the mathematical word problem, distinguishing between essential details and extraneous information.defgroup the problem into manageable components, and proceed with a step-by-step approach, incorporating precise calculations.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+   |    
+   |    Example:
+   |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Improved chain-of-thought hint:
+   |    ```
+   |    <COT_HINTER>
+   |    To solve this problem, follow these steps:
+   |    
+   |    1. Read the problem carefully and identify the key numbers and operations needed.
+   |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+   |    3. Clearly describe each step, showing all calculations and intermediate results.
+   |    4. Use relevant mathematical concepts and formulas to solve the problem.
+   |    5. Verify the solution by checking for logical consistency and accuracy.
+   |    
+   |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 4 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Carefully analyze the problem statement to extract relevant details.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+   |    
+   |    Example:
+   |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Improved chain-of-thought hint:
+   |    ```
+   |    <COT_HINTER>
+   |    To solve this problem, follow these steps:
+   |    
+   |    1. Read the problem carefully and identify the key numbers and operations needed.
+   |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+   |    3. Clearly describe each step, showing all calculations and intermediate results.
+   |    4. Use relevant mathematical concepts and formulas to solve the problem.
+   |    5. Verify the solution by checking for logical consistency and accuracy.
+   |    
+   |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 5 | Source: UCTMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Improved instruction:
+   |    ```
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    Improved output format:
+   |    ```
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' where [NUMBER] is the final numerical answer. Ensure that all intermediate results and calculations are clearly shown.
+   |    
+   |    Example:
+   |    If the problem involves multiple steps, show each step clearly, followed by the final answer. Use proper formatting and notation to make the intermediate results and final answer easy to read.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Improved chain-of-thought hint:
+   |    ```
+   |    <COT_HINTER>
+   |    To solve this problem, follow these steps:
+   |    
+   |    1. Read the problem carefully and identify the key numbers and operations needed.
+   |    2. Break down complex problems into smaller steps and identify key relationships between variables.
+   |    3. Clearly describe each step, showing all calculations and intermediate results.
+   |    4. Use relevant mathematical concepts and formulas to solve the problem.
+   |    5. Verify the solution by checking for logical consistency and accuracy.
+   |    
+   |    If you encounter any difficulties or uncertainties, please highlight them and explain your thought process.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 6 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve comprehensive math word problems by meticulously following these guidelines: 
+   |    
+   |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+   |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+   |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I will choose option 1: ADD one new example
+   |    
+   |     Here's the new EXAMPLES section with an additional example:
+   |    
+   |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+   |    A: Let x = number of fiction books and y = number of non-fiction books.
+   |    We have two parts of information:
+   |    1) x + y = 480 (total books)
+   |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+   |    
+   |    From the ratio: 5x = 3y
+   |    y = (5/3)x
+   |    Substitute into equation 1: x + (5/3)x = 480
+   |    (8/3)x = 480
+   |    x = 180
+   |    y = (5/3)*180 = 300
+   |    
+   |    The answer is: 300
+   |    
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+   | COT_HINTER:
+   |    When tackling intricate math word problems, consider the following strategies:
+   |    
+   |    *   Identify and dissect the problem's core components, pinpointing crucial numbers, variables, and relationships.
+   |    *   Identify applicable mathematical principles, formulas, or methodologies that can be leveraged to find a solution.
+   |    *   Simplify the problem or isolate key intermediate results to facilitate a more manageable solution process.
+   |    *   Systematically outline the step-by-step solution approach, focusing on essential calculations and intermediate results.
+   |    *   Validate your solution by cross-checking calculations and verifying the accuracy of your response.
+   |    
+   |    Or:
+   |    
+   |    To effectively tackle complex math word problems, employ the following structured approach:
+   |    
+   |    1.  Carefully analyze the problem to distill the essential elements, including key numbers, variables, and relationships.
+   |    2.  Determine the relevant mathematical concepts or formulas that can be applied to solve the problem.
+   |    3.  Simplify the problem or isolate critical intermediate results to facilitate a more streamlined solution process.
+   |    4.  Develop a clear, step-by-step solution strategy, highlighting crucial calculations and intermediate results.
+   |    5.  Verify the accuracy of your solution by thoroughly checking your work and calculations.
+   |    
+   |    Or:
+   |    
+   |    For complex math word problems, consider the following step-by-step framework:
+   |    
+   |    *   **Problem Analysis**: Identify key numbers, variables, and relationships in the problem.
+   |    *   **Concept Application**: Determine the relevant mathematical concepts or formulas to apply.
+   |    *   **Simplification**: Simplify the problem or isolate critical intermediate results.
+   |    *   **Solution Strategy**: Develop a clear, step-by-step solution approach, emphasizing crucial calculations and intermediate results.
+   |    *   **Verification**: Thoroughly check your work and calculations to ensure accuracy.
+   |    
+   |    Or:
+   |    
+   |    When approaching complex math word problems, apply the following problem-solving framework:
+   |    
+   |    1.  **Contextualize**: Understand the problem's context and identify key elements, such as numbers, variables, and relationships.
+   |    2.  **Conceptualize**: Determine the relevant mathematical concepts or formulas that can be applied to solve the problem.
+   |    3.  **Simplify**: Simplify the problem or isolate critical intermediate results to facilitate a more efficient solution process.
+   |    4.  **Methodize**: Develop a clear, step-by-step solution strategy, highlighting crucial calculations and intermediate results.
+   |    5.  **Validate**: Verify the accuracy of your solution by thoroughly checking your work and calculations.
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 7 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Approach comprehensive math word problems with precision and thoroughness by adhering to the following guidelines:
+   |    
+   |    - Decompose intricate problems into manageable components, carefully isolating essential numbers, operations, and interdependencies.
+   |    - Provide a step-by-step justification of your solution, including significant intermediate findings, for problems involving multi-step resolutions or sequential calculations.
+   |    - For word problems that necessitate mathematical expressions or formulas, explicitly derive and apply the relevant equations or formulas, presenting detailed calculations and intermediate results for clarity."""
+   |    
+   |    Let me know if you would like me to make any changes.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I will choose option 1: ADD one new example
+   |    
+   |     Here's the new EXAMPLES section with an additional example:
+   |    
+   |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+   |    A: Let x = number of fiction books and y = number of non-fiction books.
+   |    We have two parts of information:
+   |    1) x + y = 480 (total books)
+   |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+   |    
+   |    From the ratio: 5x = 3y
+   |    y = (5/3)x
+   |    Substitute into equation 1: x + (5/3)x = 480
+   |    (8/3)x = 480
+   |    x = 180
+   |    y = (5/3)*180 = 300
+   |    
+   |    The answer is: 300
+   |    
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+   | COT_HINTER:
+   |    To approach complex math word problems, consider the following step-by-step process:
+   |    
+   |    * Identify the key elements: What numbers, variables, and relationships are mentioned in the problem?
+   |    * Determine the mathematical foundation: What mathematical concepts, formulas, or principles apply to the problem?
+   |    * Simplify and break down the problem: Can you isolate specific components or simplify the problem to make it more manageable?
+   |    * Develop a solution strategy: Outline the necessary steps to solve the problem, including any intermediate calculations or checks required.
+   |    * Verify your solution: Take the time to review and validate your work to ensure accuracy and confidence in your answer.
+   |    
+   |    The answer is: [NUMBER]
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 8 | Source: UCTMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve comprehensive math word problems by meticulously following these guidelines: 
+   |    
+   |    - Break down complex problems into well-defined, sequential steps, identifying key numbers, operations, and relationships between variables.
+   |    - Clearly outline the thought process and intermediate results for problems involving multiple steps or sequential solutions.
+   |    - For problems requiring mathematical equations or formulas, explicitly state the equations or formulas, show your work in detail, and provide intermediate results.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I will choose option 1: ADD one new example
+   |    
+   |     Here's the new EXAMPLES section with an additional example:
+   |    
+   |     """Q: A library has 480 books on a shelf, consisting of fiction and non-fiction books. The ratio of fiction books to non-fiction books is 3:5. If x represents the number of fiction books, then how many non-fiction books are there?
+   |    A: Let x = number of fiction books and y = number of non-fiction books.
+   |    We have two parts of information:
+   |    1) x + y = 480 (total books)
+   |    2) x/y = 3/5 (ratio of fiction to non-fiction books)
+   |    
+   |    From the ratio: 5x = 3y
+   |    y = (5/3)x
+   |    Substitute into equation 1: x + (5/3)x = 480
+   |    (8/3)x = 480
+   |    x = 180
+   |    y = (5/3)*180 = 300
+   |    
+   |    The answer is: 300
+   |    
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    This new example is designed to showcase the model's ability to solve systems of linear equations with ratios and proportions.
+   | COT_HINTER:
+   |    The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:
+   |    
+   |    ```
+   |    <COT_HINTER>
+   |    If you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:
+   |    
+   |    *   What are the key numbers and relationships in the problem?
+   |    *   What mathematical concepts or formulas can I apply to solve the problem?
+   |    *   How can I simplify the problem or identify intermediate results?
+   |    *   What steps can I take to solve the problem, and what are the key intermediate calculations?
+   |    *   How can I check my work or verify the accuracy of my solution?
+   |    
+   |    By following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.
+   +────────────────────────────────────────────────────────+
+
+EVALUATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Evaluating candidate 1/8...
+   Candidate 1: Score 100.00% | Source: CaseDiagnosisMutator [BEST]
+
+   Evaluating candidate 2/8...
+   Candidate 2: Score 100.00% | Source: CaseDiagnosisMutator [BEST]
+
+   Evaluating candidate 3/8...
+   Candidate 3: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 4/8...
+   Candidate 4: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 5/8...
+   Candidate 5: Score 80.00% | Source: UCTMutator 
+
+   Evaluating candidate 6/8...
+   Candidate 6: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 7/8...
+   Candidate 7: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 8/8...
+   Candidate 8: Score 100.00% | Source: UCTMutator [BEST]
+
+ROUND 3 RESULTS:
+   ──────────────────────────────────────────────────
+   EVALUATION SCORES (sorted best to worst):
+   1. Score: 100.00% | Action: case_diagnosis -> SELECTED FOR BEAM
+   2. Score: 100.00% | Action: case_diagnosis -> SELECTED FOR BEAM
+   3. Score: 100.00% | Action: monte_carlo 
+   4. Score: 100.00% | Action: monte_carlo 
+   5. Score: 100.00% | Action: monte_carlo 
+   6. Score: 100.00% | Action: monte_carlo 
+   7. Score: 100.00% | Action: format_markdown 
+   8. Score: 80.00% | Action: format_markdown 
+
+   ROUND STATISTICS:
+   - Best this round:  100.00%
+   - Worst this round: 80.00%
+   - Score range:      80.00% -> 100.00%
+   - Global best:      100.00%
+
+   NEW BEAM (top 2 prompts for next round):
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 1/2 | Score: 100.00%
+   | Action: case_diagnosis
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    ```markdown
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    - Compound interest:
+   |        1.  Identify the principal amount, interest rate, time period, and frequency of compounding.
+   |        2.  Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years.
+   |        3.  When compounding interest, consider the effect of periodic compounding and the impact of time on the growth of the investment.
+   |    - Multiple steps or sequences:
+   |        1.  Break down complex problems into smaller, manageable steps.
+   |        2.  Identify key numbers, operations, and relationships between variables.
+   |        3.  Describe each step clearly and provide intermediate results.
+   |    - Setting up equations or using formulas:
+   |        1.  Clearly state the equations or formulas and show your work in detail.
+   |        2.  When setting up equations, ensure that all variables are defined and that the equation accurately represents the problem.
+   |    - Multiple variables and relationships:
+   |        1.  Identify the key variables and their relationships in the problem.
+   |        2.  Use algebraic techniques, such as substitution and elimination, to solve the problem.
+   |        3.  When working with multiple variables, consider the impact of each variable on the solution.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    ```markdown
+   |    <OUTPUT_FORMAT>
+   |    Provide a step-by-step solution to the problem, including:
+   |    - A clear statement of the problem and any assumptions made.
+   |    - A list of key numbers, operations, and relationships between variables.
+   |    - A detailed description of each step, including any intermediate results.
+   |    - A clear statement of the final answer and any calculations used to arrive at that answer.
+   |    End your response with 'The final answer is: [NUMBER]'.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    ```markdown
+   |    <COT_HINTER>
+   |    To help you solve the problem, consider the following questions:
+   |    - What is the key information given in the problem?
+   |    - What are the key numbers, operations, and relationships between variables?
+   |    - How can you break down the problem into smaller, manageable steps?
+   |    - What algebraic techniques can you use to solve the problem?
+   |    - What are the key assumptions you need to make in order to solve the problem?
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 2/2 | Score: 100.00%
+   | Action: case_diagnosis
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    ```markdown
+   |    <TASK_INSTRUCTION>
+   |    Solve mathematical word problems step by step, considering all given information and applying relevant mathematical concepts. For problems involving:
+   |    
+   |    - Compound interest: Clearly identify the principal amount, interest rate, time period, and frequency of compounding. Use the correct formula for compound interest: A = P(1 + r/n)^(nt), where A is the amount, P is the principal amount, r is the annual interest rate, n is the number of times interest is compounded per year, and t is the time in years. When dealing with multiple interest rates or compounding periods, break down each step separately and calculate the total amount accordingly.
+   |    
+   |    - Multiple steps or sequences: Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables. Describe each step clearly and provide intermediate results.
+   |    
+   |    - Algebraic manipulations: For algebraic problems, clearly state the equations or formulas and apply the necessary algebraic manipulations (e.g., simplification, substitution, or elimination) to solve for the unknown variable. Show your work in detail, including any intermediate results.
+   |    
+   |    - Setting up equations or using formulas: Clearly state the equations or formulas and show your work in detail.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    ```markdown
+   |    <OUTPUT_FORMAT>
+   |    End your response with 'The final answer is: [NUMBER]' or 'The solution is: [FINAL_RESULT]'. Ensure that your intermediate steps are clearly labeled and explained in your response.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    ```markdown
+   |    <COT_HINTER>
+   |    To ensure accurate calculations and clear explanations, please provide a detailed step-by-step solution, including intermediate results. For each step, clearly explain the mathematical concept or formula applied and show your work in detail.
+   +────────────────────────────────────────────────────────+
+
+   Checkpoint saved: checkpoint_round_3.json
+
+============================================================
+OPTIMIZATION COMPLETE
+============================================================
+Final Statistics:
+   - Total prompts evaluated: 23
+   - Best score achieved: 100.00%
+   - Rounds completed: 3
+
+============================================================
+BEST PROMPT (All Components)
+============================================================
+
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+EXAMPLES:
+   Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   A: Let a = number of adult tickets and c = number of child tickets.
+   We have two equations:
+   1) a + c = 350 (total tickets)
+   2) 12a + 7c = 3400 (total revenue)
+   
+   From equation 1: c = 350 - a
+   Substitute into equation 2: 12a + 7(350 - a) = 3400
+   12a + 2450 - 7a = 3400
+   5a = 3400 - 2450
+   5a = 950
+   a = 190
+   
+   The answer is: 190
+
+COT_HINTER:
+   Let's solve this step by step:
+
+============================================================
+RENDERED PROMPT (What gets sent to LLM)
+============================================================
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+A: Let a = number of adult tickets and c = number of child tickets.
+We have two equations:
+1) a + c = 350 (total tickets)
+2) 12a + 7c = 3400 (total revenue)
+
+From equation 1: c = 350 - a
+Substitute into equation 2: 12a + 7(350 - a) = 3400
+12a + 2450 - 7a = 3400
+5a = 3400 - 2450
+5a = 950
+a = 190
+
+The answer is: 190
+
+Let's solve this step by step:
+============================================================
+
+============================================================
+COMPLETE OPTIMIZATION HISTORY
+============================================================
+Round 0: init -> Score: 0.00%
+Round 0: init -> Score: 100.00%
+Round 1: case_diagnosis -> Score: 100.00%
+Round 1: monte_carlo -> Score: 100.00%
+Round 1: monte_carlo -> Score: 100.00%
+Round 1: format_markdown -> Score: 80.00%
+Round 2: case_diagnosis -> Score: 100.00%
+Round 2: case_diagnosis -> Score: 20.00%
+Round 2: monte_carlo -> Score: 100.00%
+Round 2: monte_carlo -> Score: 100.00%
+Round 2: format_markdown -> Score: 100.00%
+Round 2: case_diagnosis -> Score: 100.00%
+Round 2: monte_carlo -> Score: 100.00%
+Round 2: monte_carlo -> Score: 100.00%
+Round 2: format_markdown -> Score: 100.00%
+Round 3: case_diagnosis -> Score: 100.00%
+Round 3: case_diagnosis -> Score: 100.00%
+Round 3: monte_carlo -> Score: 100.00%
+Round 3: monte_carlo -> Score: 100.00%
+Round 3: format_markdown -> Score: 80.00%
+Round 3: monte_carlo -> Score: 100.00%
+Round 3: monte_carlo -> Score: 100.00%
+Round 3: format_markdown -> Score: 100.00%
+============================================================
+
+Results saved to ./results/run_20260206_134707

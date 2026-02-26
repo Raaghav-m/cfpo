@@ -77,7 +77,7 @@ class OllamaModel(LLMModel):
                         "num_predict": self.max_tokens,
                     }
                 },
-                timeout=300  # 5 min timeout for CPU inference
+                timeout=120  # 2 min timeout - prevents hanging
             )
             response.raise_for_status()
             result = response.json()

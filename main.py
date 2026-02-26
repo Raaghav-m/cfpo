@@ -28,10 +28,10 @@ from datetime import datetime
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from models import OllamaModel, HuggingFaceModel
-from tasks import GSM8KTask
+from models import OllamaModel, HuggingFaceModel, GroqModel
+from tasks import GSM8KTask, MultipleChoiceTask, BBHTask, ARCTask, MMLUTask
 from prompts import Prompt, PromptHistory
-from mutators import CaseDiagnosisMutator, MonteCarloMutator, FormatMutator
+from mutators import CaseDiagnosisMutator, MonteCarloMutator, FormatMutator, UCTMutator
 from optimizer import Optimizer
 
 
@@ -61,18 +61,61 @@ def setup_logging(output_dir: str) -> logging.Logger:
     return logger
 
 
-def get_initial_prompt() -> Prompt:
-    """Create the initial prompt for GSM8K."""
-    return Prompt(
-        task_instruction="Solve the following math word problem step by step.",
-        task_detail="Read the problem carefully. Identify the key numbers and operations needed. Show your work clearly.",
-        output_format="End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
-        example_hinter="Here is an example:",
-        examples="""Q: John has 5 apples. He buys 3 more. How many does he have?
-A: John starts with 5 apples. He buys 3 more. Total = 5 + 3 = 8 apples.
-The answer is: 8""",
-        cot_hinter="Let's solve this step by step:",
-    )
+def get_initial_prompt(task_name: str = 'GSM8K') -> Prompt:
+    """Create the initial prompt for the specified task."""
+    
+    if task_name.upper() in ['GSM8K', 'MATH']:
+        return Prompt(
+            task_instruction="Solve the following math word problem step by step.",
+            task_detail="Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+            output_format="End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+            example_hinter="Here is an example:",
+            examples="""Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+A: Let a = number of adult tickets and c = number of child tickets.
+We have two equations:
+1) a + c = 350 (total tickets)
+2) 12a + 7c = 3400 (total revenue)
+
+From equation 1: c = 350 - a
+Substitute into equation 2: 12a + 7(350 - a) = 3400
+12a + 2450 - 7a = 3400
+5a = 3400 - 2450
+5a = 950
+a = 190
+
+The answer is: 190""",
+            cot_hinter="Let's solve this step by step:",
+        )
+    
+    elif task_name.upper() in ['BBH', 'ARC', 'MMLU', 'MULTIPLECHOICE']:
+        return Prompt(
+            task_instruction="Answer the following multiple choice question by selecting the correct option.",
+            task_detail="Read the question and all options carefully. Consider each option and eliminate incorrect ones. Choose the best answer based on logic and knowledge.",
+            output_format="End your response with 'Answer: [LETTER]' where [LETTER] is A, B, C, or D.",
+            example_hinter="Here is an example:",
+            examples="""Q: What is the capital of France?
+A) London  B) Paris  C) Berlin  D) Madrid
+
+Let's analyze each option:
+- A) London is the capital of the UK, not France.
+- B) Paris is indeed the capital of France.
+- C) Berlin is the capital of Germany.
+- D) Madrid is the capital of Spain.
+
+Answer: B""",
+            cot_hinter="Let's think through this step by step:",
+        )
+    
+    else:
+        # Default generic prompt
+        return Prompt(
+            task_instruction="Complete the following task carefully.",
+            task_detail="Read the instructions carefully and provide a complete response.",
+            output_format="Provide your final answer clearly at the end.",
+            example_hinter="Here is an example:",
+            examples="[Examples would go here]",
+            cot_hinter="Let's work through this:",
+        )
 
 
 def create_model(model_type: str, model_name: str, logger: logging.Logger, **kwargs):
@@ -90,6 +133,9 @@ def create_model(model_type: str, model_name: str, logger: logging.Logger, **kwa
             mode=mode,
             **kwargs
         )
+    elif model_type == 'groq':
+        logger.info(f"Using Groq (FREE) with model: {model_name}")
+        return GroqModel(model_name=model_name, logger=logger, **kwargs)
     else:
         raise ValueError(f"Unknown model type: {model_type}")
 
@@ -100,6 +146,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Using Groq (FREE - recommended for testing)
+  export GROQ_API_KEY=your_key  # Get at https://console.groq.com/keys
+  python main.py --model groq
+  
   # Using Ollama (free, local)
   python main.py --model ollama --model-name phi
   
@@ -111,7 +161,10 @@ Examples:
   python main.py --model huggingface --model-name Qwen/Qwen2.5-7B-Instruct
   
   # Custom optimization settings
-  python main.py --model ollama --rounds 5 --beam-size 4 --valid-size 10
+  python main.py --model groq --rounds 5 --beam-size 4 --valid-size 10
+  
+  # Run benchmark with graphs
+  python benchmark.py --model groq --quick
   
   # Run web interface (HuggingFace Spaces compatible)
   python app.py
@@ -123,8 +176,8 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
     
     # Model settings
     parser.add_argument('--model', type=str, default='huggingface',
-                        choices=['ollama', 'huggingface'],
-                        help='LLM backend to use (default: huggingface)')
+                        choices=['ollama', 'huggingface', 'groq'],
+                        help='LLM backend to use (default: huggingface, groq is FREE)')
     parser.add_argument('--model-name', type=str, default=None,
                         help='Model name (default: phi for ollama, Llama-3.1-8B for hf)')
     parser.add_argument('--hf-mode', type=str, default='providers',
@@ -149,8 +202,10 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
     
     # Data settings
     parser.add_argument('--task', type=str, default='GSM8K',
-                        choices=['GSM8K'],
+                        choices=['GSM8K', 'BBH', 'ARC', 'MMLU', 'MultipleChoice'],
                         help='Task to optimize for (default: GSM8K)')
+    parser.add_argument('--mmlu-subject', type=str, default='abstract_algebra',
+                        help='Subject for MMLU task (default: abstract_algebra)')
     parser.add_argument('--train-size', type=int, default=10,
                         help='Training examples for diagnosis (default: 10)')
     parser.add_argument('--valid-size', type=int, default=5,
@@ -160,6 +215,12 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
     parser.add_argument('--minibatch-size', type=int, default=5,
                         help='Minibatch size for diagnosis (default: 5)')
     
+    # UCT settings
+    parser.add_argument('--use-uct', action='store_true',
+                        help='Use UCT mutator for format selection instead of random')
+    parser.add_argument('--uct-exploration', type=float, default=1.414,
+                        help='UCT exploration constant (default: 1.414, sqrt(2))')
+    
     # Output settings
     parser.add_argument('--output-dir', type=str, default=None,
                         help='Output directory (default: ./results/TIMESTAMP)')
@@ -168,9 +229,14 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
     
     args = parser.parse_args()
     
-    # Set default model names
+    # Set default model names based on backend
     if args.model_name is None:
-        args.model_name = 'phi' if args.model == 'ollama' else 'meta-llama/Llama-3.1-8B-Instruct'
+        if args.model == 'ollama':
+            args.model_name = 'phi'
+        elif args.model == 'groq':
+            args.model_name = 'llama-3.1-8b-instant'
+        else:  # huggingface
+            args.model_name = 'meta-llama/Llama-3.1-8B-Instruct'
     
     # Set default output directory
     if args.output_dir is None:
@@ -200,8 +266,34 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
         llm = create_model(args.model, args.model_name, logger, **model_kwargs)
         
         # Create task
-        if args.task == 'GSM8K':
+        task_name = args.task.upper()
+        if task_name == 'GSM8K':
             task = GSM8KTask(
+                train_size=args.train_size,
+                valid_size=args.valid_size,
+                test_size=args.test_size,
+            )
+        elif task_name == 'BBH':
+            task = BBHTask(
+                train_size=args.train_size,
+                valid_size=args.valid_size,
+                test_size=args.test_size,
+            )
+        elif task_name == 'ARC':
+            task = ARCTask(
+                train_size=args.train_size,
+                valid_size=args.valid_size,
+                test_size=args.test_size,
+            )
+        elif task_name == 'MMLU':
+            task = MMLUTask(
+                train_size=args.train_size,
+                valid_size=args.valid_size,
+                test_size=args.test_size,
+                subject=args.mmlu_subject,
+            )
+        elif task_name == 'MULTIPLECHOICE':
+            task = MultipleChoiceTask(
                 train_size=args.train_size,
                 valid_size=args.valid_size,
                 test_size=args.test_size,
@@ -214,8 +306,19 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
         # Create mutators
         mutators = [
             MonteCarloMutator(llm=llm, task=task, logger=logger),
-            FormatMutator(llm=llm, task=task, logger=logger),
         ]
+        
+        # Use UCT mutator or standard format mutator
+        if args.use_uct:
+            logger.info("Using UCT algorithm for format selection")
+            mutators.append(UCTMutator(
+                llm=llm, 
+                task=task, 
+                logger=logger,
+                exploration_constant=args.uct_exploration,
+            ))
+        else:
+            mutators.append(FormatMutator(llm=llm, task=task, logger=logger))
         
         # Add case diagnosis if we have enough training data
         if args.num_feedbacks > 0 and args.train_size >= 5:
@@ -242,7 +345,7 @@ Integrated Prompt Optimization" (https://arxiv.org/abs/2502.04295)
         )
         
         # Get initial prompt
-        init_prompt = get_initial_prompt()
+        init_prompt = get_initial_prompt(args.task)
         logger.info(f"\nInitial Prompt:\n{init_prompt.render()[:500]}...\n")
         
         # Run optimization

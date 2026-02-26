@@ -1,0 +1,41 @@
+
+============================================================
+CFPO OPTIMIZATION STARTED
+============================================================
+Configuration:
+   - Rounds: 1
+   - Beam Size: 2
+   - Mutators: ['MonteCarloMutator', 'FormatMutator']
+   - Validation Set: 2 examples
+============================================================
+
+============================================================
+INITIAL PROMPT
+============================================================
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+EXAMPLE_HINTER:
+   Here is an example:
+EXAMPLES:
+   Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   A: Let a = number of adult tickets and c = number of child tickets.
+   We have two equations:
+   1) a + c = 350 (total tickets)
+   2) 12a + 7c = 3400 (total revenue)
+   
+   From equation 1: c = 350 - a
+   Substitute into equation 2: 12a + 7(350 - a) = 3400
+   12a + 2450 - 7a = 3400
+   5a = 3400 - 2450
+   5a = 950
+   a = 190
+   
+   The answer is: 190
+COT_HINTER:
+   Let's solve this step by step:
+
+Evaluating initial prompt...

@@ -578,20 +578,38 @@ class Optimizer:
         
         correct = 0
         total = len(valid_data)
+        dlog = self.detailed_log
         
-        for example in valid_data:
+        for i, example in enumerate(valid_data):
             question = example.get('question', '')
             ground_truth = example.get('answer', '')
             
-            # Generate prediction
-            full_prompt = prompt.render(question)
-            prediction = self.eval_llm.generate(full_prompt, temperature=0)
+            # Progress indicator
+            print(f"      [{i+1}/{total}] Evaluating...", end=" ", flush=True)
             
-            # Check if correct
-            if self.task.evaluate(prediction, ground_truth):
-                correct += 1
+            try:
+                # Generate prediction
+                full_prompt = prompt.render(question)
+                prediction = self.eval_llm.generate(full_prompt, temperature=0)
+                
+                # Check if correct
+                is_correct = self.task.evaluate(prediction, ground_truth)
+                if is_correct:
+                    correct += 1
+                    print("✓")
+                else:
+                    print("✗")
+                    
+                # Log details
+                dlog.log(f"      [{i+1}/{total}] Q: {question[:50]}... -> {'✓' if is_correct else '✗'}", also_print=False)
+                
+            except Exception as e:
+                print(f"ERROR: {e}")
+                dlog.log(f"      [{i+1}/{total}] ERROR: {e}", also_print=False)
         
-        return correct / total if total > 0 else 0.0
+        accuracy = correct / total if total > 0 else 0.0
+        print(f"      Result: {correct}/{total} = {accuracy:.1%}")
+        return accuracy
     
     def _save_checkpoint(self, round_num: int, beam: List[Prompt], history: PromptHistory):
         """Save a checkpoint after each round."""

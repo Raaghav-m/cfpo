@@ -76,97 +76,125 @@ class GSM8KTask(Task):
             self._load_sample_data()
     
     def _load_sample_data(self) -> None:
-        """Load built-in sample problems for demo - Grade 8 level complexity."""
+        """Load built-in sample problems - TRICKY problems designed to challenge LLMs."""
         sample_data = [
-            # Compound interest and exponential growth
+            # ===== TRICKY PROBLEMS - Common LLM failure modes =====
+            
+            # 1. TRAP: Misleading "per" - many models miss the double conversion
             {
-                "question": "Maria invests $5,000 in a savings account that earns 6% compound interest annually. After 3 years, she withdraws half the total amount and reinvests the rest at 8% for 2 more years. How much money does she have at the end of 5 years? Round to the nearest dollar.",
-                "answer": "After 3 years: 5000 * (1.06)^3 = 5000 * 1.191016 = $5955.08. She withdraws half: 5955.08 / 2 = $2977.54. Remaining reinvested: 2977.54 * (1.08)^2 = 2977.54 * 1.1664 = $3472.60. The answer is: 3473"
+                "question": "A car travels at 60 miles per hour. How many feet does it travel in 30 seconds? (1 mile = 5280 feet)",
+                "answer": "60 mph = 60 miles/hour = 60*5280 feet/hour = 316800 feet/hour. Per second: 316800/3600 = 88 feet/second. In 30 seconds: 88*30 = 2640 feet. The answer is: 2640"
             },
-            # Systems of equations word problem
+            # 2. TRAP: Order of operations with percentages
             {
-                "question": "A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?",
-                "answer": "Let a = adult tickets, c = child tickets. a + c = 350, so c = 350 - a. Revenue: 12a + 7c = 3400. Substitute: 12a + 7(350 - a) = 3400. 12a + 2450 - 7a = 3400. 5a = 950. a = 190. The answer is: 190"
+                "question": "A shirt costs $80. It's marked down 25%, then that price is marked down another 20%. What's the final price?",
+                "answer": "After 25% off: 80 * 0.75 = $60. After 20% off: 60 * 0.80 = $48. The answer is: 48"
             },
-            # Quadratic application
+            # 3. TRAP: "How many more" vs "how many"
             {
-                "question": "A ball is thrown upward from a height of 4 feet with an initial velocity of 64 feet per second. Its height h after t seconds is given by h = -16t² + 64t + 4. What is the maximum height the ball reaches?",
-                "answer": "Maximum occurs at t = -b/(2a) = -64/(2*-16) = 64/32 = 2 seconds. Height at t=2: h = -16(4) + 64(2) + 4 = -64 + 128 + 4 = 68 feet. The answer is: 68"
+                "question": "Tom has 15 apples. Jerry has 9 apples. How many more apples does Tom have than Jerry?",
+                "answer": "Difference = 15 - 9 = 6 apples. The answer is: 6"
             },
-            # Probability with combinations
+            # 4. TRAP: Inclusive vs exclusive counting (fence post)
             {
-                "question": "A bag contains 5 red marbles, 4 blue marbles, and 3 green marbles. If you draw 2 marbles without replacement, what is the probability that both are red? Express as a percentage rounded to one decimal place.",
-                "answer": "Total marbles = 12. P(first red) = 5/12. After drawing one red, P(second red) = 4/11. P(both red) = (5/12) * (4/11) = 20/132 = 5/33 = 0.1515... = 15.2%. The answer is: 15.2"
+                "question": "A fence is 100 meters long. Posts are placed every 5 meters starting from one end. How many posts are needed?",
+                "answer": "Number of gaps = 100/5 = 20. Number of posts = 20 + 1 = 21 (including both ends). The answer is: 21"
             },
-            # Similar triangles and proportions
+            # 5. TRAP: Reading comprehension - some numbers are distractors
             {
-                "question": "A 6-foot tall person stands 15 feet away from a streetlight. If the person's shadow is 9 feet long, how tall is the streetlight in feet?",
-                "answer": "Using similar triangles: height/shadow = streetlight/(shadow + distance). 6/9 = h/(9+15). 6/9 = h/24. h = 6 * 24 / 9 = 144/9 = 16 feet. The answer is: 16"
+                "question": "A bookshelf has 5 shelves. The top shelf has 12 books, the second shelf has 15 books. The store owner adds 8 books to the top shelf and removes 3 books from the second shelf. How many books are now on the top two shelves combined?",
+                "answer": "Top shelf: 12 + 8 = 20 books. Second shelf: 15 - 3 = 12 books. Combined: 20 + 12 = 32 books. The answer is: 32"
             },
-            # Rate and work problems
+            # 6. TRAP: Negative/decrease confusion
             {
-                "question": "Pipe A can fill a tank in 6 hours. Pipe B can fill the same tank in 4 hours. Pipe C can drain the full tank in 8 hours. If all three pipes are open, how many hours will it take to fill the empty tank?",
-                "answer": "Rate A = 1/6, Rate B = 1/4, Rate C = -1/8 (draining). Combined rate = 1/6 + 1/4 - 1/8 = 4/24 + 6/24 - 3/24 = 7/24. Time = 1 / (7/24) = 24/7 = 3.43 hours. The answer is: 3.43"
+                "question": "A stock was worth $100. It dropped 20% on Monday, then rose 20% on Tuesday. What is the stock worth now?",
+                "answer": "After Monday (20% drop): 100 * 0.80 = $80. After Tuesday (20% rise): 80 * 1.20 = $96. The answer is: 96"
             },
-            # Percentage change and markup
+            # 7. TRAP: Units conversion chain
             {
-                "question": "A store buys a jacket for $45 and marks it up by 80%. During a sale, the jacket is discounted by 25%. What is the sale price and what is the store's profit per jacket?",
-                "answer": "Markup price = 45 * 1.80 = $81. Sale discount = 81 * 0.75 = $60.75. Profit = 60.75 - 45 = $15.75. The answer is: 15.75"
+                "question": "A recipe needs 2.5 cups of flour. You only have a tablespoon measure. How many tablespoons do you need? (1 cup = 16 tablespoons)",
+                "answer": "2.5 cups * 16 tablespoons/cup = 40 tablespoons. The answer is: 40"
             },
-            # Distance, rate, time with multiple legs
+            # 8. TRAP: Average with different group sizes
             {
-                "question": "Sarah drives from City A to City B at 60 mph. She then drives from City B to City C at 40 mph. The total distance is 280 miles and the total time is 5.5 hours. What is the distance from City A to City B?",
-                "answer": "Let d = distance A to B. Time for A to B = d/60. Time for B to C = (280-d)/40. Total: d/60 + (280-d)/40 = 5.5. Multiply by 120: 2d + 3(280-d) = 660. 2d + 840 - 3d = 660. -d = -180. d = 180 miles. The answer is: 180"
+                "question": "In a class, 20 students scored an average of 75 on a test. 10 students scored an average of 90. What is the overall average for all 30 students?",
+                "answer": "Total for first group: 20 * 75 = 1500. Total for second group: 10 * 90 = 900. Overall: (1500 + 900) / 30 = 2400 / 30 = 80. The answer is: 80"
             },
-            # Geometry - volume and surface area
+            # 9. TRAP: Working backwards
             {
-                "question": "A cylindrical water tank has a radius of 3 meters and a height of 8 meters. If 1 cubic meter of water weighs 1000 kg, how many metric tons of water can the tank hold when full? Use π = 3.14159.",
-                "answer": "Volume = πr²h = 3.14159 * 9 * 8 = 226.19 cubic meters. Weight = 226.19 * 1000 = 226,190 kg = 226.19 metric tons. The answer is: 226.19"
+                "question": "After giving away 1/3 of his marbles, Tim has 24 marbles left. How many marbles did Tim start with?",
+                "answer": "24 marbles = 2/3 of original. Original = 24 / (2/3) = 24 * (3/2) = 36 marbles. The answer is: 36"
             },
-            # Sequences and series
+            # 10. TRAP: Rate problem with meeting point
             {
-                "question": "The first term of a geometric sequence is 3 and the common ratio is 2. What is the sum of the first 8 terms?",
-                "answer": "Sum of geometric series: S = a(r^n - 1)/(r - 1) = 3(2^8 - 1)/(2 - 1) = 3(256 - 1)/1 = 3 * 255 = 765. The answer is: 765"
+                "question": "Two trains start 300 miles apart heading toward each other. Train A travels at 60 mph, Train B at 40 mph. How long until they meet?",
+                "answer": "Combined speed = 60 + 40 = 100 mph. Time = 300 / 100 = 3 hours. The answer is: 3"
             },
-            # Multi-step algebra
+            # 11. TRAP: Careful reading - who has what
             {
-                "question": "Three consecutive even integers have a sum of 78. What is the product of the largest and smallest of these integers?",
-                "answer": "Let the integers be n, n+2, n+4. Sum: n + (n+2) + (n+4) = 78. 3n + 6 = 78. 3n = 72. n = 24. Integers are 24, 26, 28. Product = 24 * 28 = 672. The answer is: 672"
+                "question": "Alice has 3 times as many stickers as Bob. Together they have 48 stickers. How many stickers does Alice have?",
+                "answer": "Let Bob = x, then Alice = 3x. x + 3x = 48. 4x = 48. x = 12. Alice has 3 * 12 = 36 stickers. The answer is: 36"
             },
-            # Trigonometry application
+            # 12. TRAP: Remainder problem
             {
-                "question": "A ladder 13 meters long leans against a wall. The base of the ladder is 5 meters from the wall. How high up the wall does the ladder reach?",
-                "answer": "Using Pythagorean theorem: a² + b² = c². 5² + h² = 13². 25 + h² = 169. h² = 144. h = 12 meters. The answer is: 12"
+                "question": "A number when divided by 7 gives quotient 12 and remainder 5. What is the number?",
+                "answer": "Number = 7 * 12 + 5 = 84 + 5 = 89. The answer is: 89"
             },
-            # Statistics - weighted average
+            # 13. TRAP: Profit percentage (on cost, not selling)
             {
-                "question": "In a class, 15 students scored an average of 72 on a test, and 25 students scored an average of 84. What is the average score for the entire class?",
-                "answer": "Total points = 15*72 + 25*84 = 1080 + 2100 = 3180. Total students = 15 + 25 = 40. Average = 3180/40 = 79.5. The answer is: 79.5"
+                "question": "A merchant buys an item for $80 and sells it for $100. What is the profit percentage?",
+                "answer": "Profit = 100 - 80 = $20. Profit percentage = (20/80) * 100 = 25%. The answer is: 25"
             },
-            # Mixture problems
+            # 14. TRAP: Age problems - careful about "years ago"
             {
-                "question": "A chemist has 100 mL of a 40% acid solution. How many mL of pure acid must be added to create a 60% acid solution?",
-                "answer": "Current acid = 0.40 * 100 = 40 mL. Let x = mL of pure acid added. (40 + x)/(100 + x) = 0.60. 40 + x = 0.60(100 + x). 40 + x = 60 + 0.60x. 0.40x = 20. x = 50 mL. The answer is: 50"
+                "question": "Five years ago, a mother was 3 times as old as her daughter. Now the mother is 40 years old. How old is the daughter now?",
+                "answer": "Five years ago, mother was 40 - 5 = 35. Five years ago, daughter was 35/3 = 11.67 years (but let's check: if 35 = 3 * daughter, daughter was 11.67). Now daughter is 11.67 + 5 = 16.67. Rounding: The answer is: 16.67"
             },
-            # Ratios and proportions complex
+            # 15. TRAP: Ratio problems
             {
-                "question": "The ratio of boys to girls in a school is 3:4. If 24 more boys join the school, the ratio becomes 5:4. How many students were in the school originally?",
-                "answer": "Let boys = 3x, girls = 4x. After: (3x + 24)/4x = 5/4. 4(3x + 24) = 5(4x). 12x + 96 = 20x. 96 = 8x. x = 12. Original: boys = 36, girls = 48. Total = 84. The answer is: 84"
+                "question": "The ratio of boys to girls in a class is 3:5. If there are 24 boys, how many students are in the class total?",
+                "answer": "Boys/Girls = 3/5. If boys = 24, then 24/girls = 3/5. Girls = 24 * 5/3 = 40. Total = 24 + 40 = 64. The answer is: 64"
             },
-            # Function composition
+            # 16. TRAP: Time zones
             {
-                "question": "If f(x) = 2x + 3 and g(x) = x² - 1, what is the value of f(g(4))?",
-                "answer": "First find g(4) = 4² - 1 = 16 - 1 = 15. Then f(g(4)) = f(15) = 2(15) + 3 = 30 + 3 = 33. The answer is: 33"
+                "question": "A flight leaves New York at 2:00 PM local time and arrives in Los Angeles at 5:00 PM local time. If New York is 3 hours ahead of LA, how long is the flight?",
+                "answer": "When it's 2:00 PM in NY, it's 11:00 AM in LA. Flight arrives 5:00 PM LA time. Duration = 5:00 PM - 11:00 AM = 6 hours. The answer is: 6"
+            },
+            # 17. TRAP: Interest calculation
+            {
+                "question": "You invest $1000 at 10% simple interest per year. How much interest do you earn after 6 months?",
+                "answer": "Simple interest = Principal * Rate * Time = 1000 * 0.10 * 0.5 = $50. The answer is: 50"
+            },
+            # 18. TRAP: Speed and distance with stops
+            {
+                "question": "A bus travels 120 km in 3 hours including a 30-minute rest stop. What was the bus's average moving speed?",
+                "answer": "Moving time = 3 hours - 0.5 hours = 2.5 hours. Average moving speed = 120 / 2.5 = 48 km/h. The answer is: 48"
+            },
+            # 19. TRAP: Surface area vs volume
+            {
+                "question": "A cube has a surface area of 96 square cm. What is its volume?",
+                "answer": "Surface area of cube = 6 * side². 96 = 6 * side². side² = 16. side = 4 cm. Volume = 4³ = 64 cubic cm. The answer is: 64"
+            },
+            # 20. TRAP: Probability common mistake
+            {
+                "question": "You flip a fair coin 3 times. What is the probability of getting exactly 2 heads? Express as a decimal.",
+                "answer": "Total outcomes = 2³ = 8. Favorable (exactly 2 heads): HHT, HTH, THH = 3. Probability = 3/8 = 0.375. The answer is: 0.375"
             },
         ]
         
+        # Shuffle to ensure varied difficulty across train/valid/test
+        import random
+        random.seed(42)  # Fixed seed for reproducibility
+        shuffled_data = sample_data.copy()
+        random.shuffle(shuffled_data)
+        
         # Duplicate to meet size requirements
         multiplier = max(
-            (self.train_size // len(sample_data)) + 1,
-            (self.valid_size // len(sample_data)) + 1,
-            (self.test_size // len(sample_data)) + 1,
+            (self.train_size // len(shuffled_data)) + 1,
+            (self.valid_size // len(shuffled_data)) + 1,
+            (self.test_size // len(shuffled_data)) + 1,
         )
-        extended_data = sample_data * multiplier
+        extended_data = shuffled_data * multiplier
         
         self.train_data = extended_data[:self.train_size]
         self.valid_data = extended_data[self.train_size:self.train_size + self.valid_size]

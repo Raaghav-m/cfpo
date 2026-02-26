@@ -1,0 +1,58 @@
+2026-02-26 23:26:00,011 | INFO | ============================================================
+2026-02-26 23:26:00,011 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-26 23:26:00,011 | INFO | ============================================================
+2026-02-26 23:26:00,011 | INFO | Model: ollama (llama3)
+2026-02-26 23:26:00,011 | INFO | Rounds: 1, Beam size: 1
+2026-02-26 23:26:00,011 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-26 23:26:00,011 | INFO | Data: train=2, valid=2, test=2
+2026-02-26 23:26:00,012 | INFO | Output: ./results/run_20260226_232600
+2026-02-26 23:26:00,012 | INFO | ============================================================
+2026-02-26 23:26:00,012 | INFO | Using Ollama with model: llama3
+2026-02-26 23:26:00,015 | INFO | ✓ Connected to Ollama at http://localhost:11434
+2026-02-26 23:26:00,015 | INFO | Task: GSM8KTask(train=2, valid=2, test=2)
+2026-02-26 23:26:00,015 | INFO | Mutators: ['MonteCarloMutator', 'FormatMutator']
+2026-02-26 23:26:00,016 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how ma...
+
+2026-02-26 23:26:00,016 | INFO | ============================================================
+2026-02-26 23:26:00,016 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-26 23:26:00,016 | INFO | ============================================================
+2026-02-26 23:27:39,314 | INFO | Initial prompt score: 50.00%
+2026-02-26 23:27:39,314 | INFO | 
+============================================================
+2026-02-26 23:27:39,314 | INFO | ROUND 1/1
+2026-02-26 23:27:39,314 | INFO | ============================================================
+2026-02-26 23:27:39,315 | INFO | [MonteCarlo] Generating 2 variations for round 1
+2026-02-26 23:27:39,315 | INFO | [MonteCarlo] Variation 1: modifying ['COT_HINTER']
+2026-02-26 23:27:53,337 | INFO | [MonteCarlo] Created variation 1
+2026-02-26 23:27:53,337 | INFO | [MonteCarlo] Variation 2: modifying ['TASK_DETAIL', 'EXAMPLES']
+2026-02-26 23:29:03,302 | INFO | [MonteCarlo] Created variation 2
+2026-02-26 23:29:03,303 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-26 23:29:03,306 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-26 23:29:03,307 | INFO | [FormatMutator] Created xml format
+2026-02-26 23:29:03,307 | INFO | [FormatMutator] Created plain format
+2026-02-26 23:29:03,307 | INFO | FormatMutator: generated 2 prompts
+2026-02-26 23:29:03,311 | INFO | Total unique candidates: 3
+2026-02-26 23:31:01,750 | INFO |   Candidate 1: 100.00% (monte_carlo)
+2026-02-26 23:33:28,656 | INFO |   Candidate 2: 100.00% (monte_carlo)
+2026-02-26 23:35:22,056 | INFO |   Candidate 3: 50.00% (format_xml)
+2026-02-26 23:35:22,056 | INFO | 
+Best this round: 100.00%
+2026-02-26 23:35:22,056 | INFO | Beam: ['100.00%']
+2026-02-26 23:35:22,059 | INFO | 
+============================================================
+2026-02-26 23:35:22,059 | INFO | OPTIMIZATION COMPLETE
+2026-02-26 23:35:22,059 | INFO | Best score: 100.00%
+2026-02-26 23:35:22,059 | INFO | ============================================================
+2026-02-26 23:35:22,064 | INFO | Results saved to ./results/run_20260226_232600

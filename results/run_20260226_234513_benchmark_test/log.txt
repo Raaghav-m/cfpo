@@ -1,0 +1,53 @@
+2026-02-26 23:45:13,196 | INFO | ============================================================
+2026-02-26 23:45:13,196 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-26 23:45:13,196 | INFO | ============================================================
+2026-02-26 23:45:13,196 | INFO | Model: ollama (llama3)
+2026-02-26 23:45:13,196 | INFO | Rounds: 2, Beam size: 2
+2026-02-26 23:45:13,196 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-26 23:45:13,197 | INFO | Data: train=5, valid=8, test=5
+2026-02-26 23:45:13,197 | INFO | Output: ./results/run_20260226_234513_benchmark_test
+2026-02-26 23:45:13,197 | INFO | ============================================================
+2026-02-26 23:45:13,197 | INFO | Using Ollama with model: llama3
+2026-02-26 23:45:13,200 | INFO | ✓ Connected to Ollama at http://localhost:11434
+2026-02-26 23:45:13,201 | INFO | Task: GSM8KTask(train=5, valid=8, test=5)
+2026-02-26 23:45:13,201 | INFO | Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'FormatMutator']
+2026-02-26 23:45:13,201 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how ma...
+
+2026-02-26 23:45:13,201 | INFO | ============================================================
+2026-02-26 23:45:13,201 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-26 23:45:13,201 | INFO | ============================================================
+2026-02-26 23:50:50,461 | INFO | Initial prompt score: 62.50%
+2026-02-26 23:50:50,461 | INFO | 
+============================================================
+2026-02-26 23:50:50,461 | INFO | ROUND 1/2
+2026-02-26 23:50:50,461 | INFO | ============================================================
+2026-02-26 23:50:50,462 | INFO | [CaseDiagnosis] Analyzing errors for round 1
+2026-02-26 23:54:21,158 | INFO | [CaseDiagnosis] Found 1 errors, 4 correct
+2026-02-26 23:55:59,186 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-26 23:57:28,581 | INFO | [CaseDiagnosis] Generated improvement 2
+2026-02-26 23:57:28,581 | INFO | CaseDiagnosisMutator: generated 2 prompts
+2026-02-26 23:57:28,584 | INFO | [MonteCarlo] Generating 2 variations for round 1
+2026-02-26 23:57:28,584 | INFO | [MonteCarlo] Variation 1: modifying ['COT_HINTER']
+2026-02-26 23:57:37,602 | INFO | [MonteCarlo] Created variation 1
+2026-02-26 23:57:37,603 | INFO | [MonteCarlo] Variation 2: modifying ['TASK_DETAIL', 'EXAMPLES']
+2026-02-26 23:59:22,218 | INFO | [MonteCarlo] Created variation 2
+2026-02-26 23:59:22,218 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-26 23:59:22,222 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-26 23:59:22,223 | INFO | [FormatMutator] Created xml format
+2026-02-26 23:59:22,223 | INFO | [FormatMutator] Created plain format
+2026-02-26 23:59:22,223 | INFO | FormatMutator: generated 2 prompts
+2026-02-26 23:59:22,226 | INFO | Total unique candidates: 5
+2026-02-27 00:04:46,556 | INFO |   Candidate 1: 87.50% (case_diagnosis)
+2026-02-27 00:10:32,998 | INFO |   Candidate 2: 62.50% (case_diagnosis)

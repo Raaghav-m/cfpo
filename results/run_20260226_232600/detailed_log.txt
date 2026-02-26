@@ -1,0 +1,474 @@
+
+============================================================
+CFPO OPTIMIZATION STARTED
+============================================================
+Configuration:
+   - Rounds: 1
+   - Beam Size: 1
+   - Mutators: ['MonteCarloMutator', 'FormatMutator']
+   - Validation Set: 2 examples
+============================================================
+
+============================================================
+INITIAL PROMPT
+============================================================
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+EXAMPLE_HINTER:
+   Here is an example:
+EXAMPLES:
+   Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   A: Let a = number of adult tickets and c = number of child tickets.
+   We have two equations:
+   1) a + c = 350 (total tickets)
+   2) 12a + 7c = 3400 (total revenue)
+   
+   From equation 1: c = 350 - a
+   Substitute into equation 2: 12a + 7(350 - a) = 3400
+   12a + 2450 - 7a = 3400
+   5a = 3400 - 2450
+   5a = 950
+   a = 190
+   
+   The answer is: 190
+COT_HINTER:
+   Let's solve this step by step:
+
+Evaluating initial prompt...
+      [1/2] Q: The ratio of boys to girls in a class is 3:5. If t... -> ✗
+      [2/2] Q: A bookshelf has 5 shelves. The top shelf has 12 bo... -> ✓
+Initial prompt score: 50.00%
+
+============================================================
+ROUND 1/1
+============================================================
+   Current beam size: 1 prompts
+   Best score so far: 50.00%
+
+MUTATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Mutating beam prompt 1/1:
+
+      [MonteCarlo] Available keywords for mutation:
+         ['TASK_INSTRUCTION', 'TASK_DETAIL', 'OUTPUT_FORMAT', 'EXAMPLES', 'COT_HINTER']
+
+       [MonteCarlo] Variation 1:
+         - Keywords selected: ['COT_HINTER']
+         - Number of keywords: 1/5
+         - Modifying COT_HINTER:
+           Old: "Let's solve this step by step:"
+           New: "Here is a varied version of the COT_HINTER:  "Walk..."
+
+       [MonteCarlo] Variation 2:
+         - Keywords selected: ['TASK_DETAIL', 'EXAMPLES']
+         - Number of keywords: 2/5
+         - Modifying TASK_DETAIL:
+           Old: "Read the problem carefully. Identify the key numbe..."
+           New: "Here's a revised TASK_DETAIL:  "Understand the sce..."
+         - Modifying EXAMPLES:
+           Old: "Q: A movie theater sold 350 tickets for a show. Ad..."
+           New: "I'll choose option 2: REMOVE one example.  Here's ..."
+      - MonteCarloMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: monte_carlo
+        | Modified: [COT_HINTER]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Here is a varied version of the COT_HINTER:
+        |    
+        |    "Walk me through the solution...
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: monte_carlo
+        | Modified: [TASK_DETAIL, EXAMPLES]
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Here's a revised TASK_DETAIL:
+        |    
+        |    "Understand the scenario, pinpoint the crucial values and mathematical actions involved. Disentangle intricate issues into manageable parts. Display each calculation in a clear and transparent manner.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    I'll choose option 2: REMOVE one example.
+        |    
+        |    Here's the updated EXAMPLES section:
+        |    
+        |    """Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190"""
+        |    
+        |    I removed one example to keep the prompt concise and focused.
+        | COT_HINTER:
+        |    Let's solve this step by step:
+        +──────────────────────────────────────────────────────────+
+
+      [FormatMutator] Available format keywords:
+         ['markdown', 'xml', 'plain', 'structured', 'conversational']
+         Current format: markdown
+         Formats to try: ['xml', 'plain']
+
+      [FormatMutator] Variation 1:
+         - Format keyword selected: xml
+         - Format style: XML Tags
+         - Preview: "<task>\n<instruction>Solve the following math word problem step by step.</instruction>\n<details>Read ..."
+         [OK] Created xml format variant
+
+      [FormatMutator] Variation 2:
+         - Format keyword selected: plain
+         - Format style: Plain Text
+         - Preview: "Solve the following math word problem step by step.\n\nRead the problem carefully. Identify the key nu..."
+         [OK] Created plain format variant
+      - FormatMutator: generated 2 variants
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 1 | Action: format_xml
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Let's solve this step by step:
+        +──────────────────────────────────────────────────────────+
+
+        +──────────────────────────────────────────────────────────+
+        | VARIANT 2 | Action: format_plain
+        +──────────────────────────────────────────────────────────+
+        | TASK_INSTRUCTION:
+        |    Solve the following math word problem step by step.
+        | TASK_DETAIL:
+        |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+        | OUTPUT_FORMAT:
+        |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+        | EXAMPLES:
+        |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+        |    A: Let a = number of adult tickets and c = number of child tickets.
+        |    We have two equations:
+        |    1) a + c = 350 (total tickets)
+        |    2) 12a + 7c = 3400 (total revenue)
+        |    
+        |    From equation 1: c = 350 - a
+        |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+        |    12a + 2450 - 7a = 3400
+        |    5a = 3400 - 2450
+        |    5a = 950
+        |    a = 190
+        |    
+        |    The answer is: 190
+        | COT_HINTER:
+        |    Let's solve this step by step:
+        +──────────────────────────────────────────────────────────+
+
+CANDIDATE SUMMARY:
+   ──────────────────────────────────────────────────
+   - Total generated: 5
+   - Duplicates removed: 2
+   - Unique candidates: 3
+
+ALL CANDIDATES FOR ROUND 1:
+   ──────────────────────────────────────────────────
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 1 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Here is a varied version of the COT_HINTER:
+   |    
+   |    "Walk me through the solution...
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 2 | Source: MonteCarloMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Here's a revised TASK_DETAIL:
+   |    
+   |    "Understand the scenario, pinpoint the crucial values and mathematical actions involved. Disentangle intricate issues into manageable parts. Display each calculation in a clear and transparent manner.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    I'll choose option 2: REMOVE one example.
+   |    
+   |    Here's the updated EXAMPLES section:
+   |    
+   |    """Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190"""
+   |    
+   |    I removed one example to keep the prompt concise and focused.
+   | COT_HINTER:
+   |    Let's solve this step by step:
+   +────────────────────────────────────────────────────────+
+
+   +────────────────────────────────────────────────────────+
+   | CANDIDATE 3 | Source: FormatMutator
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Let's solve this step by step:
+   +────────────────────────────────────────────────────────+
+
+EVALUATION PHASE:
+   ──────────────────────────────────────────────────
+
+   Evaluating candidate 1/3...
+      [1/2] Q: The ratio of boys to girls in a class is 3:5. If t... -> ✓
+      [2/2] Q: A bookshelf has 5 shelves. The top shelf has 12 bo... -> ✓
+   Candidate 1: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 2/3...
+      [1/2] Q: The ratio of boys to girls in a class is 3:5. If t... -> ✓
+      [2/2] Q: A bookshelf has 5 shelves. The top shelf has 12 bo... -> ✓
+   Candidate 2: Score 100.00% | Source: MonteCarloMutator [BEST]
+
+   Evaluating candidate 3/3...
+      [1/2] Q: The ratio of boys to girls in a class is 3:5. If t... -> ✗
+      [2/2] Q: A bookshelf has 5 shelves. The top shelf has 12 bo... -> ✓
+   Candidate 3: Score 50.00% | Source: FormatMutator 
+
+ROUND 1 RESULTS:
+   ──────────────────────────────────────────────────
+   EVALUATION SCORES (sorted best to worst):
+   1. Score: 100.00% | Action: monte_carlo -> SELECTED FOR BEAM
+   2. Score: 100.00% | Action: monte_carlo 
+   3. Score: 50.00% | Action: format_xml 
+
+   ROUND STATISTICS:
+   - Best this round:  100.00%
+   - Worst this round: 50.00%
+   - Score range:      50.00% -> 100.00%
+   - Global best:      100.00%
+
+   NEW BEAM (top 1 prompts for next round):
+
+   +────────────────────────────────────────────────────────+
+   | BEAM PROMPT 1/1 | Score: 100.00%
+   | Action: monte_carlo
+   +────────────────────────────────────────────────────────+
+   | TASK_INSTRUCTION:
+   |    Solve the following math word problem step by step.
+   | TASK_DETAIL:
+   |    Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+   | OUTPUT_FORMAT:
+   |    End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+   | EXAMPLES:
+   |    Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   |    A: Let a = number of adult tickets and c = number of child tickets.
+   |    We have two equations:
+   |    1) a + c = 350 (total tickets)
+   |    2) 12a + 7c = 3400 (total revenue)
+   |    
+   |    From equation 1: c = 350 - a
+   |    Substitute into equation 2: 12a + 7(350 - a) = 3400
+   |    12a + 2450 - 7a = 3400
+   |    5a = 3400 - 2450
+   |    5a = 950
+   |    a = 190
+   |    
+   |    The answer is: 190
+   | COT_HINTER:
+   |    Here is a varied version of the COT_HINTER:
+   |    
+   |    "Walk me through the solution...
+   +────────────────────────────────────────────────────────+
+
+   Checkpoint saved: checkpoint_round_1.json
+
+============================================================
+OPTIMIZATION COMPLETE
+============================================================
+Final Statistics:
+   - Total prompts evaluated: 5
+   - Best score achieved: 100.00%
+   - Rounds completed: 1
+
+============================================================
+BEST PROMPT (All Components)
+============================================================
+
+TASK_INSTRUCTION:
+   Solve the following math word problem step by step.
+
+TASK_DETAIL:
+   Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+OUTPUT_FORMAT:
+   End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+EXAMPLES:
+   Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+   A: Let a = number of adult tickets and c = number of child tickets.
+   We have two equations:
+   1) a + c = 350 (total tickets)
+   2) 12a + 7c = 3400 (total revenue)
+   
+   From equation 1: c = 350 - a
+   Substitute into equation 2: 12a + 7(350 - a) = 3400
+   12a + 2450 - 7a = 3400
+   5a = 3400 - 2450
+   5a = 950
+   a = 190
+   
+   The answer is: 190
+
+COT_HINTER:
+   Here is a varied version of the COT_HINTER:
+   
+   "Walk me through the solution...
+
+============================================================
+RENDERED PROMPT (What gets sent to LLM)
+============================================================
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?
+A: Let a = number of adult tickets and c = number of child tickets.
+We have two equations:
+1) a + c = 350 (total tickets)
+2) 12a + 7c = 3400 (total revenue)
+
+From equation 1: c = 350 - a
+Substitute into equation 2: 12a + 7(350 - a) = 3400
+12a + 2450 - 7a = 3400
+5a = 3400 - 2450
+5a = 950
+a = 190
+
+The answer is: 190
+
+Here is a varied version of the COT_HINTER:
+
+"Walk me through the solution...
+============================================================
+
+============================================================
+COMPLETE OPTIMIZATION HISTORY
+============================================================
+Round 0: init -> Score: 0.00%
+Round 0: init -> Score: 50.00%
+Round 1: monte_carlo -> Score: 100.00%
+Round 1: monte_carlo -> Score: 100.00%
+Round 1: format_xml -> Score: 50.00%
+============================================================
+
+Results saved to ./results/run_20260226_232600

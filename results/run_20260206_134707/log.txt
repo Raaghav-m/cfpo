@@ -1,0 +1,156 @@
+2026-02-06 13:47:07,886 | INFO | ============================================================
+2026-02-06 13:47:07,886 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-06 13:47:07,886 | INFO | ============================================================
+2026-02-06 13:47:07,886 | INFO | Model: huggingface (meta-llama/Llama-3.1-8B-Instruct)
+2026-02-06 13:47:07,886 | INFO | Rounds: 3, Beam size: 2
+2026-02-06 13:47:07,886 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-06 13:47:07,886 | INFO | Data: train=10, valid=5, test=5
+2026-02-06 13:47:07,886 | INFO | Output: ./results/run_20260206_134707
+2026-02-06 13:47:07,886 | INFO | ============================================================
+2026-02-06 13:47:07,887 | INFO | Using HuggingFace with model: meta-llama/Llama-3.1-8B-Instruct
+2026-02-06 13:47:07,887 | INFO | ✓ HuggingFace Providers: meta-llama/Llama-3.1-8B-Instruct (provider: auto)
+2026-02-06 13:47:07,887 | INFO | Task: GSM8KTask(train=10, valid=5, test=1)
+2026-02-06 13:47:07,887 | INFO | Using UCT algorithm for format selection
+2026-02-06 13:47:07,890 | INFO | Mutators: ['CaseDiagnosisMutator', 'MonteCarloMutator', 'UCTMutator']
+2026-02-06 13:47:07,890 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how ma...
+
+2026-02-06 13:47:07,890 | INFO | ============================================================
+2026-02-06 13:47:07,890 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-06 13:47:07,890 | INFO | ============================================================
+2026-02-06 13:47:44,022 | INFO | Initial prompt score: 100.00%
+2026-02-06 13:47:44,022 | INFO | 
+============================================================
+2026-02-06 13:47:44,023 | INFO | ROUND 1/3
+2026-02-06 13:47:44,023 | INFO | ============================================================
+2026-02-06 13:47:44,023 | INFO | [CaseDiagnosis] Analyzing errors for round 1
+2026-02-06 13:48:42,102 | INFO | [CaseDiagnosis] Found 4 errors, 6 correct
+2026-02-06 13:48:52,765 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-06 13:49:05,255 | INFO | CaseDiagnosisMutator: generated 1 prompts
+2026-02-06 13:49:05,257 | INFO | [MonteCarlo] Generating 2 variations for round 1
+2026-02-06 13:49:05,257 | INFO | [MonteCarlo] Variation 1: modifying ['OUTPUT_FORMAT', 'COT_HINTER']
+2026-02-06 13:49:09,161 | INFO | [MonteCarlo] Created variation 1
+2026-02-06 13:49:09,161 | INFO | [MonteCarlo] Variation 2: modifying ['COT_HINTER']
+2026-02-06 13:49:10,697 | INFO | [MonteCarlo] Created variation 2
+2026-02-06 13:49:10,697 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-06 13:49:10,698 | INFO | [UCTMutator] Generating 2 format variations using UCT
+2026-02-06 13:49:10,699 | INFO | [UCTMutator] Created variant: markdown + qa_plain
+2026-02-06 13:49:10,700 | INFO | [UCTMutator] Created variant: xml + instruction_response
+2026-02-06 13:49:10,700 | INFO | UCTMutator: generated 2 prompts
+2026-02-06 13:49:10,701 | INFO | Total unique candidates: 4
+2026-02-06 13:50:24,204 | INFO |   Candidate 1: 100.00% (case_diagnosis)
+2026-02-06 13:51:23,954 | INFO |   Candidate 2: 100.00% (monte_carlo)
+2026-02-06 13:52:24,816 | INFO |   Candidate 3: 100.00% (monte_carlo)
+2026-02-06 13:53:23,190 | INFO |   Candidate 4: 80.00% (format_markdown)
+2026-02-06 13:53:23,190 | INFO | 
+Best this round: 100.00%
+2026-02-06 13:53:23,190 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-06 13:53:23,194 | INFO | 
+============================================================
+2026-02-06 13:53:23,194 | INFO | ROUND 2/3
+2026-02-06 13:53:23,194 | INFO | ============================================================
+2026-02-06 13:53:23,194 | INFO | [CaseDiagnosis] Analyzing errors for round 2
+2026-02-06 13:55:01,619 | INFO | [CaseDiagnosis] Found 5 errors, 5 correct
+2026-02-06 13:55:11,588 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-06 13:55:20,841 | INFO | [CaseDiagnosis] Generated improvement 2
+2026-02-06 13:55:20,841 | INFO | CaseDiagnosisMutator: generated 2 prompts
+2026-02-06 13:55:20,845 | INFO | [MonteCarlo] Generating 2 variations for round 2
+2026-02-06 13:55:20,845 | INFO | [MonteCarlo] Variation 1: modifying ['EXAMPLES', 'TASK_INSTRUCTION']
+2026-02-06 13:55:29,412 | INFO | [MonteCarlo] Created variation 1
+2026-02-06 13:55:29,412 | INFO | [MonteCarlo] Variation 2: modifying ['COT_HINTER']
+2026-02-06 13:55:32,018 | INFO | [MonteCarlo] Created variation 2
+2026-02-06 13:55:32,018 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-06 13:55:32,021 | INFO | [UCTMutator] Generating 2 format variations using UCT
+2026-02-06 13:55:43,357 | INFO | Added generated format: txt_template_0
+2026-02-06 13:55:43,359 | INFO | [UCTMutator] Created variant: markdown + qa_plain
+2026-02-06 13:55:43,360 | INFO | [UCTMutator] Created variant: xml + instruction_response
+2026-02-06 13:55:43,360 | INFO | UCTMutator: generated 2 prompts
+2026-02-06 13:55:43,364 | INFO | [CaseDiagnosis] Analyzing errors for round 2
+2026-02-06 13:56:48,380 | INFO | [CaseDiagnosis] Found 4 errors, 6 correct
+2026-02-06 13:56:56,701 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-06 13:57:04,402 | INFO | CaseDiagnosisMutator: generated 1 prompts
+2026-02-06 13:57:04,404 | INFO | [MonteCarlo] Generating 2 variations for round 2
+2026-02-06 13:57:04,404 | INFO | [MonteCarlo] Variation 1: modifying ['TASK_INSTRUCTION']
+2026-02-06 13:57:06,836 | INFO | [MonteCarlo] Created variation 1
+2026-02-06 13:57:06,836 | INFO | [MonteCarlo] Variation 2: modifying ['COT_HINTER', 'TASK_INSTRUCTION']
+2026-02-06 13:57:11,888 | INFO | [MonteCarlo] Created variation 2
+2026-02-06 13:57:11,888 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-06 13:57:11,891 | INFO | [UCTMutator] Generating 2 format variations using UCT
+2026-02-06 13:57:11,893 | INFO | [UCTMutator] Created variant: markdown + qa_plain
+2026-02-06 13:57:11,894 | INFO | [UCTMutator] Created variant: xml + instruction_response
+2026-02-06 13:57:11,894 | INFO | UCTMutator: generated 2 prompts
+2026-02-06 13:57:11,896 | INFO | Total unique candidates: 9
+2026-02-06 13:57:53,469 | INFO |   Candidate 1: 100.00% (case_diagnosis)
+2026-02-06 13:58:42,685 | INFO |   Candidate 2: 20.00% (case_diagnosis)
+2026-02-06 13:59:19,305 | INFO |   Candidate 3: 100.00% (monte_carlo)
+2026-02-06 13:59:56,012 | INFO |   Candidate 4: 100.00% (monte_carlo)
+2026-02-06 14:00:39,629 | INFO |   Candidate 5: 100.00% (format_markdown)
+2026-02-06 14:01:05,434 | INFO |   Candidate 6: 100.00% (case_diagnosis)
+2026-02-06 14:01:34,545 | INFO |   Candidate 7: 100.00% (monte_carlo)
+2026-02-06 14:02:04,940 | INFO |   Candidate 8: 100.00% (monte_carlo)
+2026-02-06 14:02:33,835 | INFO |   Candidate 9: 100.00% (format_markdown)
+2026-02-06 14:02:33,835 | INFO | 
+Best this round: 100.00%
+2026-02-06 14:02:33,835 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-06 14:02:33,840 | INFO | 
+============================================================
+2026-02-06 14:02:33,840 | INFO | ROUND 3/3
+2026-02-06 14:02:33,840 | INFO | ============================================================
+2026-02-06 14:02:33,840 | INFO | [CaseDiagnosis] Analyzing errors for round 3
+2026-02-06 14:03:33,499 | INFO | [CaseDiagnosis] Found 4 errors, 6 correct
+2026-02-06 14:03:42,626 | INFO | [CaseDiagnosis] Generated improvement 1
+2026-02-06 14:03:50,091 | INFO | [CaseDiagnosis] Generated improvement 2
+2026-02-06 14:03:50,091 | INFO | CaseDiagnosisMutator: generated 2 prompts
+2026-02-06 14:03:50,095 | INFO | [MonteCarlo] Generating 2 variations for round 3
+2026-02-06 14:03:50,096 | INFO | [MonteCarlo] Variation 1: modifying ['TASK_DETAIL']
+2026-02-06 14:03:52,012 | INFO | [MonteCarlo] Created variation 1
+2026-02-06 14:03:52,012 | INFO | [MonteCarlo] Variation 2: modifying ['TASK_DETAIL']
+2026-02-06 14:03:53,901 | INFO | [MonteCarlo] Created variation 2
+2026-02-06 14:03:53,902 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-06 14:03:53,904 | INFO | [UCTMutator] Generating 2 format variations using UCT
+2026-02-06 14:03:53,905 | INFO | [UCTMutator] Created variant: markdown + qa_plain
+2026-02-06 14:03:53,906 | INFO | [UCTMutator] Created variant: xml + instruction_response
+2026-02-06 14:03:53,906 | INFO | UCTMutator: generated 2 prompts
+2026-02-06 14:03:53,908 | INFO | [CaseDiagnosis] Analyzing errors for round 3
+2026-02-06 14:04:55,935 | INFO | [CaseDiagnosis] Found 5 errors, 5 correct
+2026-02-06 14:05:20,516 | INFO | CaseDiagnosisMutator: generated 0 prompts
+2026-02-06 14:05:20,517 | INFO | [MonteCarlo] Generating 2 variations for round 3
+2026-02-06 14:05:20,517 | INFO | [MonteCarlo] Variation 1: modifying ['COT_HINTER']
+2026-02-06 14:05:34,616 | INFO | [MonteCarlo] Created variation 1
+2026-02-06 14:05:34,616 | INFO | [MonteCarlo] Variation 2: modifying ['COT_HINTER', 'TASK_INSTRUCTION']
+2026-02-06 14:05:54,841 | INFO | [MonteCarlo] Created variation 2
+2026-02-06 14:05:54,841 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-06 14:05:54,849 | INFO | [UCTMutator] Generating 2 format variations using UCT
+2026-02-06 14:06:22,660 | INFO | Added generated format: yaml_format_1
+2026-02-06 14:06:22,661 | INFO | [UCTMutator] Created variant: markdown + qa_plain
+2026-02-06 14:06:22,661 | INFO | [UCTMutator] Created variant: xml + instruction_response
+2026-02-06 14:06:22,661 | INFO | UCTMutator: generated 2 prompts
+2026-02-06 14:06:22,664 | INFO | Total unique candidates: 8
+2026-02-06 14:07:56,594 | INFO |   Candidate 1: 100.00% (case_diagnosis)
+2026-02-06 14:08:49,098 | INFO |   Candidate 2: 100.00% (case_diagnosis)
+2026-02-06 14:09:30,887 | INFO |   Candidate 3: 100.00% (monte_carlo)
+2026-02-06 14:10:07,380 | INFO |   Candidate 4: 100.00% (monte_carlo)
+2026-02-06 14:10:50,233 | INFO |   Candidate 5: 80.00% (format_markdown)
+2026-02-06 14:11:32,521 | INFO |   Candidate 6: 100.00% (monte_carlo)
+2026-02-06 14:12:04,225 | INFO |   Candidate 7: 100.00% (monte_carlo)
+2026-02-06 14:12:35,735 | INFO |   Candidate 8: 100.00% (format_markdown)
+2026-02-06 14:12:35,735 | INFO | 
+Best this round: 100.00%
+2026-02-06 14:12:35,735 | INFO | Beam: ['100.00%', '100.00%']
+2026-02-06 14:12:35,739 | INFO | 
+============================================================
+2026-02-06 14:12:35,739 | INFO | OPTIMIZATION COMPLETE
+2026-02-06 14:12:35,739 | INFO | Best score: 100.00%
+2026-02-06 14:12:35,740 | INFO | ============================================================
+2026-02-06 14:12:35,743 | INFO | Results saved to ./results/run_20260206_134707

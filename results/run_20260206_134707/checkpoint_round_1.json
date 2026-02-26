@@ -1,0 +1,134 @@
+{
+  "round": 1,
+  "beam": [
+    {
+      "TASK_INSTRUCTION": "The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:\n\n```\n<TASK_INSTRUCTION>\nSolve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.\n\nFor problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.",
+      "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+      "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+      "COT_HINTER": "The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:\n\n```\n<COT_HINTER>\nIf you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:\n\n*   What are the key numbers and relationships in the problem?\n*   What mathematical concepts or formulas can I apply to solve the problem?\n*   How can I simplify the problem or identify intermediate results?\n*   What steps can I take to solve the problem, and what are the key intermediate calculations?\n*   How can I check my work or verify the accuracy of my solution?\n\nBy following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.",
+      "round": 1,
+      "score": 1.0,
+      "action": "case_diagnosis"
+    },
+    {
+      "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+      "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+      "OUTPUT_FORMAT": "Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.",
+      "EXAMPLE_HINTER": "Here is an example:",
+      "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+      "COT_HINTER": "Walk me through the solution to this problem.",
+      "round": 1,
+      "score": 1.0,
+      "action": "monte_carlo"
+    }
+  ],
+  "best_score": 1.0,
+  "all_candidates": [
+    {
+      "rank": 1,
+      "score": 1.0,
+      "action": "case_diagnosis",
+      "prompt": {
+        "TASK_INSTRUCTION": "The task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:\n\n```\n<TASK_INSTRUCTION>\nSolve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.\n\nFor problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "The chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:\n\n```\n<COT_HINTER>\nIf you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:\n\n*   What are the key numbers and relationships in the problem?\n*   What mathematical concepts or formulas can I apply to solve the problem?\n*   How can I simplify the problem or identify intermediate results?\n*   What steps can I take to solve the problem, and what are the key intermediate calculations?\n*   How can I check my work or verify the accuracy of my solution?\n\nBy following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions.",
+        "round": 1,
+        "score": 1.0,
+        "action": "case_diagnosis"
+      },
+      "rendered_prompt": "# Task\nThe task instruction should be more specific and clear about the types of problems the model should solve and the steps it should follow. Here's an improved version:\n\n```\n<TASK_INSTRUCTION>\nSolve the following math word problems step by step, considering all given information and applying relevant mathematical concepts. Break down complex problems into smaller, manageable steps. Identify key numbers, operations, and relationships between variables.\n\nFor problems involving multiple steps or sequences, describe each step clearly and provide intermediate results. If a problem requires setting up equations or using formulas, clearly state the equations or formulas and show your work in detail.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nThe chain-of-thought hint should be revised to provide more specific guidance on handling complex problems and setting up equations. Here's an improved version:\n\n```\n<COT_HINTER>\nIf you encounter a problem that requires multiple steps, breaking it down into smaller parts, or setting up equations, ask yourself:\n\n*   What are the key numbers and relationships in the problem?\n*   What mathematical concepts or formulas can I apply to solve the problem?\n*   How can I simplify the problem or identify intermediate results?\n*   What steps can I take to solve the problem, and what are the key intermediate calculations?\n*   How can I check my work or verify the accuracy of my solution?\n\nBy following these steps, you'll be able to solve complex math word problems step by step and provide accurate and clear solutions."
+    },
+    {
+      "rank": 2,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "Please provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "Walk me through the solution to this problem.",
+        "round": 1,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nPlease provide the numerical solution to the problem, followed by 'The answer is: ' and the final result.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nWalk me through the solution to this problem."
+    },
+    {
+      "rank": 3,
+      "score": 1.0,
+      "action": "monte_carlo",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "Breaking it down step by step will help us find the solution.",
+        "round": 1,
+        "score": 1.0,
+        "action": "monte_carlo"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nBreaking it down step by step will help us find the solution."
+    },
+    {
+      "rank": 4,
+      "score": 0.8,
+      "action": "format_markdown",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 0.8,
+        "action": "format_markdown"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nLet's solve this step by step:"
+    }
+  ],
+  "deleted_prompts": [
+    {
+      "reason": "duplicate",
+      "action": "format_xml",
+      "mutator": "UCTMutator",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 1,
+        "score": 1.0,
+        "action": "format_xml"
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nLet's solve this step by step:"
+    },
+    {
+      "reason": "duplicate",
+      "action": "init",
+      "mutator": "beam_carry",
+      "prompt": {
+        "TASK_INSTRUCTION": "Solve the following math word problem step by step.",
+        "TASK_DETAIL": "Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.",
+        "OUTPUT_FORMAT": "End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.",
+        "EXAMPLE_HINTER": "Here is an example:",
+        "EXAMPLES": "Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190",
+        "COT_HINTER": "Let's solve this step by step:",
+        "round": 0,
+        "score": 1.0,
+        "action": ""
+      },
+      "rendered_prompt": "# Task\nSolve the following math word problem step by step.\n\n# Details\nRead the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.\n\n# Output Format\nEnd your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.\n\nHere is an example:\nQ: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how many adult tickets were sold?\nA: Let a = number of adult tickets and c = number of child tickets.\nWe have two equations:\n1) a + c = 350 (total tickets)\n2) 12a + 7c = 3400 (total revenue)\n\nFrom equation 1: c = 350 - a\nSubstitute into equation 2: 12a + 7(350 - a) = 3400\n12a + 2450 - 7a = 3400\n5a = 3400 - 2450\n5a = 950\na = 190\n\nThe answer is: 190\n\nLet's solve this step by step:"
+    }
+  ]
+}

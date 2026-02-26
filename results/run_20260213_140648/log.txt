@@ -1,0 +1,47 @@
+2026-02-13 14:06:48,512 | INFO | ============================================================
+2026-02-13 14:06:48,512 | INFO | CFPO - Content Format Prompt Optimization
+2026-02-13 14:06:48,512 | INFO | ============================================================
+2026-02-13 14:06:48,512 | INFO | Model: ollama (llama3)
+2026-02-13 14:06:48,512 | INFO | Rounds: 1, Beam size: 2
+2026-02-13 14:06:48,512 | INFO | Mutator settings: feedbacks=1, random=2, format=2
+2026-02-13 14:06:48,513 | INFO | Data: train=2, valid=2, test=5
+2026-02-13 14:06:48,513 | INFO | Output: ./results/run_20260213_140648
+2026-02-13 14:06:48,513 | INFO | ============================================================
+2026-02-13 14:06:48,513 | INFO | Using Ollama with model: llama3
+2026-02-13 14:06:48,522 | INFO | ✓ Connected to Ollama at http://localhost:11434
+2026-02-13 14:06:48,523 | INFO | Task: GSM8KTask(train=2, valid=2, test=5)
+2026-02-13 14:06:48,523 | INFO | Mutators: ['MonteCarloMutator', 'FormatMutator']
+2026-02-13 14:06:48,524 | INFO | 
+Initial Prompt:
+# Task
+Solve the following math word problem step by step.
+
+# Details
+Read the problem carefully. Identify the key numbers and operations needed. Break down complex problems into smaller steps. Show all your calculations clearly.
+
+# Output Format
+End your response with 'The answer is: [NUMBER]' where [NUMBER] is the final numerical answer.
+
+Here is an example:
+Q: A movie theater sold 350 tickets for a show. Adult tickets cost $12 and child tickets cost $7. If the total revenue was $3,400, how ma...
+
+2026-02-13 14:06:48,524 | INFO | ============================================================
+2026-02-13 14:06:48,524 | INFO | CFPO OPTIMIZATION STARTED
+2026-02-13 14:06:48,524 | INFO | ============================================================
+2026-02-13 14:12:40,251 | INFO | Initial prompt score: 50.00%
+2026-02-13 14:12:40,252 | INFO | 
+============================================================
+2026-02-13 14:12:40,252 | INFO | ROUND 1/1
+2026-02-13 14:12:40,252 | INFO | ============================================================
+2026-02-13 14:12:40,253 | INFO | [MonteCarlo] Generating 2 variations for round 1
+2026-02-13 14:12:40,253 | INFO | [MonteCarlo] Variation 1: modifying ['OUTPUT_FORMAT', 'TASK_INSTRUCTION']
+2026-02-13 14:13:07,817 | INFO | [MonteCarlo] Created variation 1
+2026-02-13 14:13:07,817 | INFO | [MonteCarlo] Variation 2: modifying ['OUTPUT_FORMAT', 'TASK_DETAIL']
+2026-02-13 14:13:27,740 | INFO | [MonteCarlo] Created variation 2
+2026-02-13 14:13:27,741 | INFO | MonteCarloMutator: generated 2 prompts
+2026-02-13 14:13:27,746 | INFO | [FormatMutator] Generating 2 format variations
+2026-02-13 14:13:27,747 | INFO | [FormatMutator] Created xml format
+2026-02-13 14:13:27,747 | INFO | [FormatMutator] Created plain format
+2026-02-13 14:13:27,748 | INFO | FormatMutator: generated 2 prompts
+2026-02-13 14:13:27,752 | INFO | Total unique candidates: 3
+2026-02-13 14:16:57,123 | INFO | Interrupted by user
